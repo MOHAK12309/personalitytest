@@ -116,7 +116,7 @@ console.log(country)
   const sendVerificationCode2 = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.patch(`${baseUrl}/api/v1/test/update3/6537f43234a5cb13e460b288`, {
+      const response = await axios.patch(`${baseUrl}/api/v1/test/update3/${id}`, {
 
         // lastname:lastname,
         testNumber: fullPhoneNumber,

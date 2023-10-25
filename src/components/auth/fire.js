@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserIdFromAuth } from "../../Redux/actions/GetSellerIdFromAuthActionCreators";
 import { useSelector } from "react-redux";
-const baseUrl = "http://localhost:8000";
+const baseUrls = "http://localhost:8000";
+const baseUrl = "https://server.youthbuzz.in";
 
 let questions = 
 [

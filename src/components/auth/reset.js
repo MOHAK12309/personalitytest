@@ -22,8 +22,8 @@ ChartJS.register(ArcElement, Tooltip, Legend);
   const[score2,setscore2]=useState()
 
   console.log(resetToken)
-  const baseUrl = "http://localhost:8000"
-  const baseUrls = "https://server.youthbuzz.in"
+  const baseUrls = "http://localhost:8000"
+  const baseUrl = "https://server.youthbuzz.in"
   const id = useSelector((state) => state.get_seller_profile_id.user_id);
 
   const fetchData2 = async (e) => {

@@ -11,7 +11,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function Edit() {
-    const baseUrl = "http://localhost:8000";
+    const baseUrls = "http://localhost:8000";
+    const baseUrl = "https://server.youthbuzz.in";
     const id = useSelector((state) => state.get_seller_profile_id.user_id);
     const [show, setShow] = useState("case1")
     const [show3, setShow3] = useState(true)

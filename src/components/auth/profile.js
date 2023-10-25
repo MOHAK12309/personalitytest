@@ -13,7 +13,8 @@ import { UseSelector } from "react-redux/es/hooks/useSelector";
 function Profile() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const baseUrl = "http://localhost:8000";
+    const baseUrls = "http://localhost:8000";
+    const baseUrl = "https://server.youthbuzz.in";
     const id = useSelector((state) => state.get_seller_profile_id.user_id);
  
     const [data, setData] = useState('')

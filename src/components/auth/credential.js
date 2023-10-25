@@ -84,7 +84,7 @@ function Edit() {
   const handleRecaptchaVerify = (response) => {
   
 };
-  const fullPhoneNumber = `+${country}${phoneNumber}`;
+  const fullPhoneNumber = `${country}${phoneNumber}`;
 console.log(country)
   console.log(fullPhoneNumber)
   const sendVerificationCode = async (e) => {

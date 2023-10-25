@@ -47,13 +47,14 @@ function Profile() {
             if(response.data.statusbar==="true"){
               const dis=dispatch(getUserIdFromAuth(response.data.data.newUser2._id));
 
-console.log(dis)
+
 
               navigate("/auth")
 
             }
 
         } catch (error) {
+          alert("user name exist")
         }
     };
     const handleLogout = async (e) => {

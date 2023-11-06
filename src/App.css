@@ -1,0 +1,41 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+
+.video{
+  height: 100vh;
+
+
+  overflow: hidden;
+
+}
+
+.a1_white{
+  z-index: 999;
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  
+ 
+ 
+}
+.img-game{
+  width: 80%;
+  margin: auto;
+}
+.img2{
+  width: 200px;
+}
+
+
+@media (max-width:600px) {
+  .img2{
+    width: 150px;
+  }
+  .a1_white{
+    top: 35vh;
+  }
+  
+}

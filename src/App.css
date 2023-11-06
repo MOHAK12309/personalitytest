@@ -16,6 +16,7 @@ body{
 .video2{
   min-width: 100%;
   min-height: 100%;
+  overflow: hidden;
 }
 .a1_white{
   z-index: 999;
@@ -27,18 +28,19 @@ body{
  
 }
 .img-game{
-  width: 80%;
+  width: 50%;
   margin: auto;
 }
 .img2{
-  width: 250px;
+  width: 30%;
 }
-/* @media (max-width:1500px) 
+@media (max-width:830px) 
 {
-  .video2{
-    height: 100vh;
-    width: auto;
-   
-  }
+ .img-game{
+  width: 80%;
+ }
+ .img2{
+  width: 200px;
+ }
   
-} */
+}

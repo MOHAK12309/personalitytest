@@ -29,6 +29,7 @@ function Game() {
         disablePictureInPicture
         autoplay="autoplay"
         muted
+        className="video2"
         loop
       ></video>
     </div>

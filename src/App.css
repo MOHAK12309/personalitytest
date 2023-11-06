@@ -4,14 +4,18 @@ body{
 }
 
 
+
 .video{
-  height: 100vh;
+
+  width: 100%;
 
 
   overflow: hidden;
 
 }
-
+.video2{
+width: 100%;
+}
 .a1_white{
   z-index: 999;
   width: 100%;
@@ -26,14 +30,26 @@ body{
   margin: auto;
 }
 .img2{
-  width: 200px;
+  width: 250px;
 }
-
+@media (max-width:1450px) 
+{
+  .video2{
+    height: 100vh;
+    width: auto;
+   
+  }
+  
+}
 
 @media (max-width:600px) {
   .img2{
     width: 150px;
   }
+  .video2{
+    width: auto;
+  }
+  
   .a1_white{
     top: 35vh;
   }

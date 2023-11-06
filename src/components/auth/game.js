@@ -30,6 +30,7 @@ function Game() {
         autoplay="autoplay"
         muted
         className="video2"
+        
         loop
       ></video>
     </div>

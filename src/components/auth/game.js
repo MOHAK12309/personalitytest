@@ -21,9 +21,7 @@ function Game() {
           <img src={register} width="100%" ></img>
           <div style={{textAlign:"center"}}>
           
-            <div>
-            <img style={{marginTop:"3px"}} src={Background2} className="img2" ></img>
-            </div>
+          
           </div>
         </div>
       </div>

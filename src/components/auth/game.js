@@ -4,7 +4,7 @@ import { useRef } from "react";
 const register = new URL("../../images/a1_White-01 (1).png", import.meta.url);
 
 const Background = new URL(
-  "../../images/Background Advanced.mp4",
+  "../../images/Background Advanced.gif",
   import.meta.url
 );
 const Background2 = new URL(

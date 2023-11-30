@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 function Join() {
   const [name, setName] = useState("");
@@ -11,7 +11,7 @@ function Join() {
   const Navigate=useNavigate('')
 
   const handlesubmit = async (e) => {
-    alert('hcaskjdchsacs')
+  
     e.preventDefault();
     try {
       const res = await axios.post("https://server.ourcadium.com/api/v1/user/signup", {
@@ -40,7 +40,7 @@ function Join() {
         <h4 className="join-font">JOIN THE ARMADA TO BEYOND THE KNOWN</h4>
         <form onSubmit={handlesubmit} className="join-form-main">
           <div style={{ width: "80%", margin: "auto" }}>
-            <div>
+          
               <input
                 onChange={(e) => setName(e.target.value)}
                 value={name}
@@ -48,8 +48,7 @@ function Join() {
                 type="text"
                 placeholder="Name*"
               ></input>
-            </div>
-            <div>
+          
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -57,8 +56,8 @@ function Join() {
                 type="email"
                 placeholder="Email*"
               ></input>
-            </div>
-            <div>
+           
+           
               <input
                 onChange={(e) => setphoneNumber(e.target.value)}
                 value={phone}
@@ -66,8 +65,8 @@ function Join() {
                 type="tel"
                 placeholder="Contact*"
               ></input>
-            </div>
-            <div>
+            
+          
               <textarea
                 placeholder="Additional Note"
                 onChange={(e) => setDescription(e.target.value)}
@@ -75,11 +74,9 @@ function Join() {
                 className="input-form"
                 style={{ height: "180px" }}
               ></textarea>
-            </div>
-            <button type="submit" onTouchStart={handlesubmit} onClick={handlesubmit}  className="join-btn2">JOIN NOW</button>
-            <div style={{ textAlign: "left", width: "60%" }}>
-              <button type="submit" onTouchStart={handlesubmit} onClick={handlesubmit}  className="join-btn2">JOIN NOW</button>
-            </div>
+           
+         <button type="submit"   className="join-btn2">JOIN NOW</button>
+           
           </div>
         </form>
       </div>

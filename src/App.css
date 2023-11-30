@@ -56,24 +56,22 @@ body {
 }
 .join-btn2 {
   color: #fff;
-  width: 120px;
-  padding: 10px;
 
+  width: 120px;
+  height: 50px;
   background: #0d4f74;
   font-family: "Enixe", sans-serif;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
   font-size: 15px;
   font-style: normal;
-  margin: 5px auto;
+  margin-top: 5px;
+  
   font-weight: bolder;
   border: none;
+ 
 
-  line-height: normal;
 }
-.join-btn2:hover{
-  background: transparent;
-  border: 1px solid #0d4f74;
-}
+
 .join-btn-main {
   text-align: center;
   width: 25%;
@@ -99,6 +97,7 @@ body {
 .join-form-main {
   width: 50%;
   margin: auto;
+  height: auto;
 }
 .input-form {
   width: 100%;
@@ -199,29 +198,27 @@ body {
   .position {
     top: 40%;
   }
-  .join-btn{
+  .join-btn {
     padding: 0px;
     width: 250px;
     padding: 10px 20px 10px 20px;
-  
   }
-  .joinFooter{
+  .joinFooter {
     height: 500px;
   }
-  .video{
+  .video {
     height: 100vh;
   }
-  .img-game1{
+  .img-game1 {
     top: 30vh;
   }
-  .join-btn-main{
+  .join-btn-main {
     width: 80%;
-
   }
   .thankYou {
     font-size: 10px;
   }
-  .join-btn2{
+  .join-btn2 {
     width: 100%;
   }
 }

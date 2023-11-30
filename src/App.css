@@ -84,7 +84,7 @@ body {
 }
 .joinback {
   background: #0e1b23;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   align-items: center;
   text-align: center;
@@ -223,7 +223,5 @@ body {
   .thankYou {
     font-size: 10px;
   }
-  .join-btn2 {
-    width: 100%;
-  }
+
 }

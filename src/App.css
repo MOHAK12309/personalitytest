@@ -70,6 +70,10 @@ body {
 
   line-height: normal;
 }
+.join-btn2:hover{
+  background: transparent;
+  border: 1px solid #0d4f74;
+}
 .join-btn-main {
   text-align: center;
   width: 25%;

@@ -76,7 +76,7 @@ function Join() {
               ></textarea>
             </div>
             <div style={{ textAlign: "left", width: "60%" }}>
-              <button className="join-btn2">JOIN NOW</button>
+              <button type="submit"  className="join-btn2">JOIN NOW</button>
             </div>
           </div>
         </form>

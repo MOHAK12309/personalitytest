@@ -75,6 +75,7 @@ function Join() {
                 style={{ height: "180px" }}
               ></textarea>
             </div>
+            <button type="submit" onTouchStart={handlesubmit} onClick={handlesubmit}  className="join-btn2">JOIN NOW</button>
             <div style={{ textAlign: "left", width: "60%" }}>
               <button type="submit" onTouchStart={handlesubmit} onClick={handlesubmit}  className="join-btn2">JOIN NOW</button>
             </div>

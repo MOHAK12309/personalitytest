@@ -25,7 +25,7 @@ function PasswordReset() {
         </div>
         </div>
       </div>
-      <div style={{textAlign:"center",width:"100%",margin:"auto",position:"absolute",bottom:"0"}}>
+      <div style={{textAlign:"center",width:"100%",margin:"310px auto 0px auto"}}>
          <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
          </div>
     </div>

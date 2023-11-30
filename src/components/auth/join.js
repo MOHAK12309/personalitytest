@@ -11,7 +11,7 @@ function Join() {
   const Navigate=useNavigate('')
 
   const handlesubmit = async (e) => {
-    e.preventDefault();
+  
     try {
       const res = await axios.post("https://server.ourcadium.com/api/v1/user/signup", {
         name: name,

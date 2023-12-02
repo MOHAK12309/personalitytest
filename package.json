@@ -34,6 +34,7 @@
     "react-flickity-component": "^4.0.1",
     "react-ga": "^3.3.1",
     "react-ga4": "^2.1.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
     "react-images-uploading": "^3.1.7",

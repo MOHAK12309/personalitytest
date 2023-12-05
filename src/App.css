@@ -199,6 +199,10 @@ body {
     width: 95%;
   }
 }
+.g-recaptcha {
+  z-index: 1;
+}
+
 @media (max-width: 600px) {
   .position {
     top: 40%;

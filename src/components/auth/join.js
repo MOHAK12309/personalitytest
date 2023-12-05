@@ -90,9 +90,7 @@ function Join() {
 
             {/* Add reCAPTCHA component */}
             <ReCAPTCHA
-            style={{
-              width:"10%"
-            }}
+          
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
               onChange={handleRecaptchaChange}
             />

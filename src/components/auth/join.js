@@ -92,7 +92,7 @@ function Join() {
             <ReCAPTCHA
           
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
-              onChange={handleRecaptchaChange}
+              onClick={handleRecaptchaChange}
             />
             <div style={{width:"80%", textAlign:"left"}}>
             <Button type="submit" onClick={handleSubmit} style={{background:"#0d4f74"}} variant="contained"className="join-btn2">

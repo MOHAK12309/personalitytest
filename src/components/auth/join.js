@@ -91,8 +91,7 @@ function Join() {
             {/* Add reCAPTCHA component */}
       
             <ReCAPTCHA
-              size="invisible"
-          
+                        
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
               onChange={handleRecaptchaChange}
             />

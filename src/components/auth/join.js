@@ -6,16 +6,29 @@ import toast, { Toaster } from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+
 function Join() {
   const [name, setName] = useState("");
   const [phone, setPhoneNumber] = useState("");
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
-  const [recaptchaValue, setRecaptchaValue] = useState(null); // New state for reCAPTCHA
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
   const Navigate = useNavigate("");
 
   const handleRecaptchaChange = (value) => {
     setRecaptchaValue(value);
+  };
+
+  const validateEmail = (email) => {
+    // Email regex pattern
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    // Numeric characters only regex pattern
+    const numericRegex = /^[0-9]+$/;
+    return numericRegex.test(phone);
   };
 
   const handleSubmit = async (e) => {
@@ -23,6 +36,17 @@ function Join() {
 
     if (!recaptchaValue) {
       toast.error("Please verify that you are not a robot.");
+      return;
+    }
+
+    // Validate email and phone fields
+    if (!validateEmail(email)) {
+      toast.error("Invalid email format");
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      toast.error("Phone number should contain only numeric characters");
       return;
     }
 
@@ -53,64 +77,67 @@ function Join() {
     <div className="joinback">
       <div className="join-form">
         <h4 className="join-font">JOIN THE ARMADA TO BEYOND THE KNOWN</h4>
-    <form>
-    <div className="join-form-main">
-          <div style={{ width: "80%", margin: "auto" }}>
-            <input
-            required
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              className="input-form"
-              type="text"
-              placeholder="Name*"
-            ></input>
+        <form>
+          <div className="join-form-main">
+            <div style={{ width: "80%", margin: "auto" }}>
+              <input
+                required
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                className="input-form"
+                type="text"
+                placeholder="Name*"
+              ></input>
 
-            <input
-            required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input-form"
-              type="email"
-              placeholder="Email*"
-            ></input>
+              <input
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="input-form"
+                type="email"
+                placeholder="Email*"
+              ></input>
 
-            <input
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              value={phone}
-              className="input-form"
-              type="tel"
-              required
-              placeholder="Contact number (with country code)"
-            ></input>
+              <input
+                onChange={(e) => {
+                  // Allow only numeric characters in the phone input
+                  const numericValue = e.target.value.replace(/[^0-9]/g, "");
+                  setPhoneNumber(numericValue);
+                }}
+                value={phone}
+                className="input-form"
+                type="tel"
+                required
+                placeholder="Contact number (with country code)"
+              ></input>
 
-            <textarea
-              placeholder="Additional Note"
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-              className="input-form"
-              style={{ height: "180px" }}
-            ></textarea>
+              <textarea
+                placeholder="Additional Note"
+                onChange={(e) => setDescription(e.target.value)}
+                value={description}
+                className="input-form"
+                style={{ height: "180px" }}
+              ></textarea>
 
-            {/* Add reCAPTCHA component */}
-            <ReCAPTCHA
-          
-          sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
-          onChange={handleRecaptchaChange}
-        />       
-        
-            <div style={{width:"80%", textAlign:"left"}}>
-            <Button type="submit" onClick={handleSubmit} style={{background:"#0d4f74"}} variant="contained"className="join-btn2">
-            JOIN NOW
-            </Button>
+              <ReCAPTCHA
+                sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
+                onChange={handleRecaptchaChange}
+              />
 
-
+              <div style={{ width: "80%", textAlign: "left" }}>
+                <Button
+                  type="submit"
+                  onClick={handleSubmit}
+                  style={{ background: "#0d4f74" }}
+                  variant="contained"
+                  className="join-btn2"
+                >
+                  JOIN NOW
+                </Button>
+              </div>
             </div>
-
-          
           </div>
-        </div>
-    </form>
-       
+        </form>
       </div>
       <div
         style={{

@@ -4,7 +4,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
-
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 function Join() {
   const [name, setName] = useState("");
   const [phone, setPhoneNumber] = useState("");
@@ -20,10 +21,10 @@ function Join() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!recaptchaValue) {
-      toast.error("Please verify that you are not a robot.");
-      return;
-    }
+    // if (!recaptchaValue) {
+    //   toast.error("Please verify that you are not a robot.");
+    //   return;
+    // }
 
     try {
       const res = await axios.post(
@@ -87,16 +88,67 @@ function Join() {
             ></textarea>
 
             {/* Add reCAPTCHA component */}
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
               onChange={handleRecaptchaChange}
-            />
+            /> */}
+            <Button type="submit" variant="contained">
+              Contained
+            </Button>
 
             <button type="submit" className="join-btn2">
               JOIN NOW
             </button>
           </div>
         </form>
+        <div className="join-form-main">
+          <div style={{ width: "80%", margin: "auto" }}>
+            <input
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              className="input-form"
+              type="text"
+              placeholder="Name*"
+            ></input>
+
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input-form"
+              type="email"
+              placeholder="Email*"
+            ></input>
+
+            <input
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={phone}
+              className="input-form"
+              type="tel"
+              placeholder="Contact*"
+            ></input>
+
+            <textarea
+              placeholder="Additional Note"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+              className="input-form"
+              style={{ height: "180px" }}
+            ></textarea>
+
+            {/* Add reCAPTCHA component */}
+            {/* <ReCAPTCHA
+              sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
+              onChange={handleRecaptchaChange}
+            /> */}
+            <Button type="submit" variant="contained">
+              Contained
+            </Button>
+
+            <button type="submit" onClick={handleSubmit} className="join-btn2">
+              JOIN NOW
+            </button>
+          </div>
+        </div>
       </div>
       <div
         style={{

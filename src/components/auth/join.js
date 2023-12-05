@@ -92,7 +92,7 @@ function Join() {
       
             <ReCAPTCHA
                         
-              sitekey="6LdGoyYpAAAAANFU4snqMgK4H8ZB3soDRAanOsMf"
+              sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
               onChange={handleRecaptchaChange}
             />
           

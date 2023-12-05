@@ -110,7 +110,7 @@ function Join() {
           width: "100%",
           margin: "auto",
           position: "absolute",
-          bottom: "10px",
+          bottom: "0px",
         }}
       >
         <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>

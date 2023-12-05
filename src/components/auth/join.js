@@ -89,6 +89,7 @@ function Join() {
             ></textarea>
 
             {/* Add reCAPTCHA component */}
+            <div class="g-recaptcha" data-sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"></div>
             <ReCAPTCHA
              
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"

@@ -92,6 +92,8 @@ function Join() {
       
             <ReCAPTCHA
                         
+
+              style={{width:"100px"}}
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
               onChange={handleRecaptchaChange}
             />
@@ -101,7 +103,7 @@ function Join() {
             JOIN NOW
             </Button>
 
-            
+
             </div>
 
           

@@ -15,9 +15,9 @@ function Join() {
   const [recaptchaValue, setRecaptchaValue] = useState(null);
   const Navigate = useNavigate("");
 
-  const handleRecaptchaChange = (value) => {
-    setRecaptchaValue(value);
-  };
+  // const handleRecaptchaChange = (value) => {
+  //   setRecaptchaValue(value);
+  // };
 
   const validateEmail = (email) => {
     // Email regex pattern
@@ -121,7 +121,7 @@ function Join() {
 
               <ReCAPTCHA
                 sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
-                onChange={handleRecaptchaChange}
+              
               />
 
               <div style={{ width: "80%", textAlign: "left" }}>

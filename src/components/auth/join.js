@@ -100,6 +100,8 @@ function Join() {
             <Button type="submit" onClick={handleSubmit} style={{background:"#0d4f74"}} variant="contained"className="join-btn2">
             JOIN NOW
             </Button>
+
+            
             </div>
 
           

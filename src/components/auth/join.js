@@ -21,10 +21,10 @@ function Join() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // if (!recaptchaValue) {
-    //   toast.error("Please verify that you are not a robot.");
-    //   return;
-    // }
+    if (!recaptchaValue) {
+      toast.error("Please verify that you are not a robot.");
+      return;
+    }
 
     try {
       const res = await axios.post(
@@ -90,6 +90,9 @@ function Join() {
 
             {/* Add reCAPTCHA component */}
             <ReCAPTCHA
+            style={{
+              width:"10%"
+            }}
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
               onChange={handleRecaptchaChange}
             />

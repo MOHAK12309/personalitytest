@@ -89,11 +89,7 @@ function Join() {
             ></textarea>
 
             {/* Add reCAPTCHA component */}
-            <ReCAPTCHA
-          
-              sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
-              onChange={handleRecaptchaChange}
-            />
+        
             <div style={{width:"80%", textAlign:"left"}}>
             <Button type="submit" onClick={handleSubmit} style={{background:"#0d4f74"}} variant="contained"className="join-btn2">
             JOIN NOW
@@ -102,6 +98,11 @@ function Join() {
 
           
           </div>
+          <ReCAPTCHA
+          
+          sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
+          onChange={handleRecaptchaChange}
+        />
         </div>
       </div>
       <div

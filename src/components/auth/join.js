@@ -57,6 +57,7 @@ function Join() {
     <div className="join-form-main">
           <div style={{ width: "80%", margin: "auto" }}>
             <input
+            required
               onChange={(e) => setName(e.target.value)}
               value={name}
               className="input-form"
@@ -65,6 +66,7 @@ function Join() {
             ></input>
 
             <input
+            required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="input-form"
@@ -77,6 +79,7 @@ function Join() {
               value={phone}
               className="input-form"
               type="tel"
+              required
               placeholder="Contact number (with country code)"
             ></input>
 

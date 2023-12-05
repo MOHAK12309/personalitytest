@@ -201,6 +201,7 @@ body {
 }
 .g-recaptcha {
   z-index: 1;
+  width: 100%;
 }
 
 @media (max-width: 600px) {

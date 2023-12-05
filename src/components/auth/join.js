@@ -53,54 +53,7 @@ function Join() {
     <div className="joinback">
       <div className="join-form">
         <h4 className="join-font">JOIN THE ARMADA TO BEYOND THE KNOWN</h4>
-        <form onSubmit={handleSubmit} className="join-form-main">
-          <div style={{ width: "80%", margin: "auto" }}>
-            <input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              className="input-form"
-              type="text"
-              placeholder="Name*"
-            ></input>
-
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input-form"
-              type="email"
-              placeholder="Email*"
-            ></input>
-
-            <input
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              value={phone}
-              className="input-form"
-              type="tel"
-              placeholder="Contact*"
-            ></input>
-
-            <textarea
-              placeholder="Additional Note"
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-              className="input-form"
-              style={{ height: "180px" }}
-            ></textarea>
-
-            {/* Add reCAPTCHA component */}
-            {/* <ReCAPTCHA
-              sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
-              onChange={handleRecaptchaChange}
-            /> */}
-            <Button type="submit" variant="contained">
-              Contained
-            </Button>
-
-            <button type="submit" className="join-btn2">
-              JOIN NOW
-            </button>
-          </div>
-        </form>
+    
         <div className="join-form-main">
           <div style={{ width: "80%", margin: "auto" }}>
             <input
@@ -124,7 +77,7 @@ function Join() {
               value={phone}
               className="input-form"
               type="tel"
-              placeholder="Contact*"
+              placeholder="Contact number (with country code)"
             ></input>
 
             <textarea
@@ -136,17 +89,17 @@ function Join() {
             ></textarea>
 
             {/* Add reCAPTCHA component */}
-            {/* <ReCAPTCHA
+            <ReCAPTCHA
               sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
               onChange={handleRecaptchaChange}
-            /> */}
-            <Button type="submit" variant="contained">
-              Contained
+            />
+            <div style={{width:"80%", textAlign:"left"}}>
+            <Button type="submit" onClick={handleSubmit} style={{background:"#0d4f74"}} variant="contained"className="join-btn2">
+            JOIN NOW
             </Button>
+            </div>
 
-            <button type="submit" onClick={handleSubmit} className="join-btn2">
-              JOIN NOW
-            </button>
+          
           </div>
         </div>
       </div>

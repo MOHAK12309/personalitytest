@@ -203,6 +203,12 @@ body {
   .position {
     top: 40%;
   }
+  .join-form-main{
+    width: 80%;
+  }
+  .join-font{
+    font-size: 1em;
+  }
   .join-btn {
     padding: 0px;
     width: 250px;

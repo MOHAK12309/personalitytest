@@ -53,7 +53,7 @@ function Game() {
     
       <div className="joinFooter">
         <div className="join-btn-main">
-        <Link to="join"> <button className="join-btn"> <img width="100%" src={joinNow}></img> </button></Link> 
+        <Link to="join"> <button className="join-btn"> <img width="200px" src={joinNow}></img> </button></Link> 
       
         </div>
         <div  style={{textAlign:"center",width:"100%",margin:"auto auto 10px auto"}}>

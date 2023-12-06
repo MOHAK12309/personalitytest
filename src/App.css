@@ -41,8 +41,8 @@ body {
 }
 .join-btn {
   color: #fff;
-  width: 100%;
-  padding: 20px 60px 20px 60px;
+  width: 300px;
+  padding: 20px 60px 20px 55px;
   background: #0d4f74;
   font-family: "Enixe", sans-serif;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -51,9 +51,15 @@ body {
   margin: auto;
   font-weight: bolder;
   border: none;
+  border-radius: 10px;
   margin-top: 220px;
   line-height: normal;
 }
+.join-btn:hover{
+  background-color: #0d4e74d4;
+
+}
+
 .join-btn2 {
   color: #fff;
 

@@ -7,6 +7,7 @@ import PasswordReset from "./components/auth/end";
 import Game from "./components/auth/game";
 import Join from "./components/auth/join";
 import { Toaster } from "react-hot-toast";
+import Rides from "./components/auth/rides";
 
 // importing service creation pages
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Game />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/end" element={<PasswordReset />}></Route>
+          <Route path="/rides/:rideId/VR Spaceship" element={<Rides/>} />
         </Routes>
       </div>
       <Toaster/>

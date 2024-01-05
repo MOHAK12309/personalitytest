@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<Game />}></Route>
           <Route path="/join" element={<Join />}></Route>
           <Route path="/end" element={<PasswordReset />}></Route>
-          <Route path="/rides/:rideId/VR Spaceship" element={<Rides/>} />
+          <Route path="/rides/1184/VR Spaceship" element={<Rides/>} />
         </Routes>
       </div>
       <Toaster/>

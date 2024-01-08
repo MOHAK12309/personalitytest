@@ -20,7 +20,7 @@ const Background3 = new URL(
   import.meta.url
 );
 const joinNow = new URL("../../images/JOIN NOW.png", import.meta.url);
-
+const vrspaceShip = new URL("../../images/THE VR Spaceship.png", import.meta.url);
 function Rides() {
   const responsive = {
     desktop: {
@@ -82,15 +82,15 @@ function Rides() {
               <div style={{ paddingTop: "100px" }} className="">
                 <div className="img-game">
                   <div className="RidePic">
-                    <h1>{item.Name}</h1>
+                    <h1><img width="80%" src={vrspaceShip}></img>   </h1><br></br>
                     <img
-                      width="100%"
+                      width="400px"
                       src={`https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg`}
                     ></img>
 
-                    <h2>Location:{item.Location}</h2>
-                    <h2>Rating:{item.Rating}</h2>
-                    <h2>ID:{item.RideID}</h2>
+                    <h2 style={{textAlign:"left",color:"white",marginTop:"50px"}}>Location:{item.Location}</h2>
+                    <h2 style={{textAlign:"left",color:"white"}}>Rating:{item.Rating}</h2>
+                    <h2 style={{textAlign:"left",color:"white"}}>ID:{item.RideID}</h2>
 
                     <Carousel
                       minimumTouchDrag={80}
@@ -117,7 +117,7 @@ function Rides() {
                         );
                       })}
                     </Carousel>
-                    <p>{item.Description}</p>
+                    <p className="ridedes">{item.Description}</p>
                   </div>
 
                   <div></div>

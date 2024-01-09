@@ -1,11 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-const register = new URL(
-  "../../images/a1_White-01 (1).png",
-  import.meta.url
-);
+import QrScanner from "react-qr-scanner";
+const register = new URL("../../images/a1_White-01 (1).png", import.meta.url);
 
 const Background = new URL(
   "../../images/Background Advanced.gif",
@@ -19,27 +17,131 @@ const Background3 = new URL(
   "../../images/A new era of LBE XR Gaming.png",
   import.meta.url
 );
+const Scan = new URL("../../images/SCAN CODE.png", import.meta.url);
+
 const joinNow = new URL("../../images/JOIN NOW.png", import.meta.url);
 function Game() {
   const videoRef = useRef(null);
+  const [scanneropen, setopenScan] = useState(false);
+  useEffect(() => {
+    const startCamera = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
 
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      } catch (error) {
+        console.error("Error accessing camera:", error);
+      }
+    };
+    if (scanneropen) {
+      startCamera();
+    }
+    return () => {
+      const video = videoRef.current;
+
+      if (video) {
+        const stream = video.srcObject;
+        if (stream) {
+          const tracks = stream.getTracks();
+          tracks.forEach((track) => track.stop());
+        }
+      }
+    };
+  }, []);
+  const handleScan = (result) => {
+    if (result) {
+      console.log("qr folund");
+      console.log(result, "hhhhj");
+      // Use a regex to check if the result is a valid URL
+
+      if (result) {
+        // Navigate to the detected URL
+
+        window.location.href = result.text;
+      } else {
+        console.error("Invalid URL format");
+      }
+    }
+  };
+
+  const handleError = (error) => {
+    console.error("Error accessing camera:", error);
+  };
+  const [flashOn, setFlashOn] = useState(false);
+  const toggleFlash = () => {
+    setFlashOn(!flashOn);
+  };
   return (
     <div>
-   
-    
       <div className="video">
         <div className="a1_white">
           <div className="img-game">
             <img src={register} width="100%"></img>
-            
+
             <div style={{ textAlign: "center" }}></div>
           </div>
           <div className="img-game1">
-          <img src={Background3} width="100%"></img>
-            
-            <div style={{ textAlign: "center" }}></div>
+            <img src={Background3} width="100%"></img>
+
+            <div style={{ textAlign: "center" }}>
+              <div className="mobilebtn">
+                {scanneropen && (
+                  <div
+                    style={{ marginTop: "10px" }}
+                    className="scanner-container"
+                  >
+                    <QrScanner
+                      delay={300}
+                      onError={handleError}
+                      onScan={handleScan}
+                      style={{ width: "100%", zIndex: "99" }}
+                      facingMode="environment"
+                      facingModeChanged={(value) => {
+                        if (value === "user") {
+                          // Flash is not supported when using the front camera
+                          setFlashOn(false);
+                        }
+                      }}
+                      constraints={{
+                        video: {
+                          facingMode: "environment",
+                          torch: flashOn,
+                        },
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+              <div>
+                {scanneropen ? 
+                  <button
+                  onClick={() => {
+                    setopenScan(false);
+                  }}
+                  className="X"
+                >
+                  X
+                </button>:
+                  <button
+                    onClick={() => {
+                      setopenScan(true);
+                    }}
+                    style={{
+                      padding: "20px 30px 20px 30px",
+                      marginTop: "10px",
+                    }}
+                    className="join-btn"
+                  >
+                    <img width="70%" src={Scan}></img>
+                  </button>
+                 }
+              </div>
+            </div>
           </div>
-    
         </div>
         <video
           src={Background}
@@ -50,18 +152,27 @@ function Game() {
           loop
         ></video>
       </div>
-    
+
       <div className="joinFooter">
         <div className="join-btn-main">
-        <Link to="join"> <button className="join-btn"> <img width="200px" src={joinNow}></img> </button></Link> 
-      
+          <Link to="join">
+            {" "}
+            <button className="join-btn">
+              {" "}
+              <img width="200px" src={joinNow}></img>{" "}
+            </button>
+          </Link>
         </div>
-        <div  style={{textAlign:"center",width:"100%",margin:"auto auto 10px auto"}}>
-         <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
-         </div>
-     
+        <div
+          style={{
+            textAlign: "center",
+            width: "100%",
+            margin: "auto auto 10px auto",
+          }}
+        >
+          <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
+        </div>
       </div>
-    
     </div>
   );
 }

@@ -282,7 +282,7 @@ function Rides() {
                     </h1>
                     <br></br>
                     <img
-                      width="80%"
+                      width="70%" height="400px"
                       src={`https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg`}
                     ></img>
 

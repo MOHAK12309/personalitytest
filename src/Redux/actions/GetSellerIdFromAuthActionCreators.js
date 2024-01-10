@@ -1,11 +1,14 @@
 import { getSellerId} from "./actionTypes";
 
-export const getUserIdFromAuth = (user_id) => {
+export const getUserIdFromAuth = (user_id,lastname, name, email) => {
     return {
         type: getSellerId.GET_SELLER_ID_FROM_AUTH,
         payload: {
             user_id,
-          
+            lastname,
+     
+            name,
+            email,
       
         }
         

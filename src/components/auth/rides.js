@@ -34,6 +34,7 @@ function Rides() {
   const baseUrls = "http://localhost:8000";
   const { resetToken } = useParams();
   const navigate = useNavigate("");
+
   console.log(resetToken);
   const responsive = {
     desktop: {
@@ -81,13 +82,12 @@ function Rides() {
       });
       console.log(res, "jkhjkljkl");
       if (res.data.status == "Success") {
-
         setBookstatus("processing");
         buytest();
       }
     } catch (error) {
       alert("Booked");
-      setBookstatus('')
+      setBookstatus("");
     }
   };
   const RideStatus = async () => {
@@ -133,13 +133,29 @@ function Rides() {
       console.log(err, "<--- err in api fetching");
     }
   };
+  useEffect(() => {
+    if (!id) {
+      navigate("/login", {
+        replace: true,
+        state: {
+          signIn: true,
+        },
+      });
+    } else {
+      navigate("/rides/1184/VR Spaceship");
+
+      // Assuming fetchData is a function you want to call when 'id' is truthy
+    }
+  }, [navigate, id]);
   return (
     <>
       {bookStatus == "form" && (
         <div>
           {data.map((item) => {
             return (
-              <div style={{ position: "absolute", width: "100%",zIndex:"100" }}>
+              <div
+                style={{ position: "absolute", width: "100%", zIndex: "100" }}
+              >
                 <div className="bookslot">
                   <h1>
                     <img width="100%" src={vrspaceShip}></img>{" "}
@@ -157,14 +173,14 @@ function Rides() {
                       value={timeSlot}
                       onChange={(e) => setTimeSlot(e.target.value)}
                     >
-                      <option value="15">10</option>
+                      <option value="10">10</option>
                       <option value="30">30</option>
                       <option value="45">45</option>
                       <option value="60">60</option>
                     </select>{" "}
                     min
                   </div>
-                  <div className="bookfont" >
+                  <div className="bookfont">
                     cost:
                     <input
                       type="text"
@@ -175,18 +191,15 @@ function Rides() {
                         border: "none",
                         outline: "none",
                         margin: "0px",
-                        width:"60px"
+                        width: "60px",
                       }}
                       value={timeSlot}
                       onChange={(e) => setTimeSlot(e.target.value)}
                     ></input>
-                      </div>
-                      <button onClick={RideBuy} className="confirm">
+                  </div>
+                  <button onClick={RideBuy} className="confirm">
                     Confirm Booking
                   </button>
-                
-
-                
                 </div>
               </div>
             );
@@ -198,7 +211,9 @@ function Rides() {
         <div>
           {data.map((item) => {
             return (
-              <div style={{ position: "absolute", width: "100%" }}>
+              <div
+                style={{ position: "absolute", width: "100%", zIndex: "100" }}
+              >
                 <div className="bookslot">
                   <h1>
                     <img width="100%" src={vrspaceShip}></img>{" "}
@@ -219,7 +234,9 @@ function Rides() {
         <div>
           {data.map((item) => {
             return (
-              <div style={{ position: "absolute", width: "100%" }}>
+              <div
+                style={{ position: "absolute", width: "100%", zIndex: "100" }}
+              >
                 <div className="bookslot">
                   <h1>
                     <img width="100%" src={vrspaceShip}></img>{" "}
@@ -229,126 +246,138 @@ function Rides() {
                     height="200px"
                     src="https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg"
                   ></img>
-                  <div style={{display:"flex",flexDirection:"column"}}>
-                  <h4
-                    style={{ textAlign: "center", margin: "0px" }}
-                    className="bookfont"
-                  >
-                    Booking Confirmed!
-                  </h4>
-                  <h4 className="bookfont">Start Time:</h4>
-                  <h4 className="bookfont">End Time:</h4>
-                   
-                  <button onClick={()=>setBookstatus('')} className="confirm">
-                    Go Back
-                  </button>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <h4
+                      style={{ textAlign: "center", margin: "0px" }}
+                      className="bookfont"
+                    >
+                      Booking Confirmed!
+                    </h4>
+                    <h4 className="bookfont">Start Time:</h4>
+                    <h4 className="bookfont">End Time:</h4>
+
+                    <button
+                      onClick={() => setBookstatus("")}
+                      className="confirm"
+                    >
+                      Go Back
+                    </button>
                   </div>
                 </div>
-                
               </div>
             );
           })}
         </div>
       )}
       <div>
-      {data.map((item) => {
-        return (
-          <div>
-            <div style={{ height: "auto" }} className="video">
-              <div
-                style={{
-                  position: "fixed",
-                  width: "400px",
-                  bottom: "30px",
-                  width: "100%",
-                  zIndex: "99",
-                }}
-              >
-                <div style={{ width: "100%", textAlign: "center" }}>
-                  <button onClick={(e)=>setBookstatus('form')} style={{ width: "400px" }} className="join-btn">
-                    BOOK NOW
-                  </button>
-                </div>
-              </div>
-         
-             
-              <div>
-
-              <div style={{ paddingTop: "100px" }} className="">
-                <div className="img-game">
-                  <div className="RidePic">
-                    <h1>
-                      <img width="80%" src={vrspaceShip}></img>{" "}
-                    </h1>
-                    <br></br>
-                    <img
-                      width="70%" height="400px"
-                      src={`https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg`}
-                    ></img>
-
-                    <h2
-                      style={{
-                        textAlign: "left",
-                        color: "white",
-                        marginTop: "50px",
-                      }}
+        {data.map((item) => {
+          return (
+            <div>
+              <div style={{ height: "auto" }} className="video">
+                <div
+                  style={{
+                    position: "fixed",
+                    width: "400px",
+                    bottom: "30px",
+                    width: "100%",
+                    zIndex: "99",
+                  }}
+                  className={`profile-b ${
+                    bookStatus ? "blurred-background" : ""
+                  }`}
+                >
+                  <div style={{ width: "100%", textAlign: "center" }}>
+                    <button
+                      onClick={(e) => setBookstatus("form")}
+                      style={{ width: "400px" }}
+                      className="join-btn"
                     >
-                      Location:{item.Location}
-                    </h2>
-                    <h2 style={{ textAlign: "left", color: "white" }}>
-                      Rating:{item.Rating}
-                    </h2>
-                    <h2 style={{ textAlign: "left", color: "white" }}>
-                      ID:{item.RideID}
-                    </h2>
-
-                    <Carousel
-                      minimumTouchDrag={80}
-                      swipeable={true}
-                      draggable={true}
-                      showDots={false}
-                      responsive={responsive}
-                      ssr={true} // means to render carousel on server-side.
-                      infinite={true}
-                      autoPlaySpeed={4000}
-                      autoPlay={true}
-                      keyBoardControl={true}
-                      transitionDuration={500}
-                      containerClass="rideSlide"
-                    >
-                      {item.Gallery.map((item2) => {
-                        return (
-                          <div>
-                            <img
-                              width="100%"
-                              src={`https://ourcadium.s3.ap-south-1.amazonaws.com/${item2}`}
-                            ></img>
-                          </div>
-                        );
-                      })}
-                    </Carousel>
-                    <p className="ridedes">{item.Description}</p>
+                      BOOK NOW
+                    </button>
                   </div>
-
-                  <div></div>
-                  <div></div>
                 </div>
-              </div>
 
+                <div>
+                  <div
+                    style={{ paddingTop: "100px" }}
+                    className={`profile-b ${
+                      bookStatus ? "blurred-background" : ""
+                    }`}
+                  >
+                    <div className="img-game">
+                      <div className="RidePic">
+                        <h1>
+                          <img width="80%" src={vrspaceShip}></img>{" "}
+                        </h1>
+                        <br></br>
+                        <img
+                          width="70%"
+                          height="400px"
+                          src={`https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg`}
+                        ></img>
+
+                        <h2
+                          style={{
+                            textAlign: "left",
+                            color: "white",
+                            marginTop: "50px",
+                          }}
+                        >
+                          Location:{item.Location}
+                        </h2>
+                        <h2 style={{ textAlign: "left", color: "white" }}>
+                          Rating:{item.Rating}
+                        </h2>
+                        <h2 style={{ textAlign: "left", color: "white" }}>
+                          ID:{item.RideID}
+                        </h2>
+
+                        <Carousel
+                          minimumTouchDrag={80}
+                          swipeable={true}
+                          draggable={true}
+                          showDots={false}
+                          responsive={responsive}
+                          ssr={true} // means to render carousel on server-side.
+                          infinite={true}
+                          autoPlaySpeed={4000}
+                          autoPlay={true}
+                          keyBoardControl={true}
+                          transitionDuration={500}
+                          containerClass="rideSlide"
+                        >
+                          {item.Gallery.map((item2) => {
+                            return (
+                              <div>
+                                <img
+                                  width="100%"
+                                  src={`https://ourcadium.s3.ap-south-1.amazonaws.com/${item2}`}
+                                ></img>
+                              </div>
+                            );
+                          })}
+                        </Carousel>
+                        <p className="ridedes">{item.Description}</p>
+                      </div>
+
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </div>
+                </div>
+
+                <video
+                  src={Background}
+                  disablePictureInPicture
+                  autoplay="autoplay"
+                  muted
+                  className="video2"
+                  loop
+                ></video>
               </div>
-      
-              <video
-                src={Background}
-                disablePictureInPicture
-                autoplay="autoplay"
-                muted
-                className="video2"
-                loop
-              ></video>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
       </div>
     </>
   );

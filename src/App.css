@@ -332,3 +332,6 @@ body {
   }
   
 }
+.blurred-background{
+  filter: blur(5px);
+}

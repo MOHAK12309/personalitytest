@@ -106,7 +106,7 @@ function Rides() {
   const buytest = async () => {
     try {
       const res = await axios.patch(
-        `https://server.youthbuzz.in/api/v1/user/updatecoin/659828e1e1595df1b677e2c5`,
+        `https://server.youthbuzz.in/api/v1/user/updatecoin/${id}`,
         {
           amount: timeSlot,
         }

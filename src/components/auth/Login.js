@@ -74,10 +74,13 @@ function Login() {
       clearInterval(interval);
     };
   });
-   const handleCoundown=()=>{
-    setButton(true)
-    setShow("number")
-   }
+  
+  const validatePhone = (phone) => {
+    // Numeric characters only regex pattern
+    const numericRegex = /^[0-9]+$/;
+    return numericRegex.test(phone);
+  };
+   
   const firebaseConfig = {
     apiKey: "AIzaSyBjepGG8G886Y_AKHW5BYtdasJG-6JmhYc",
     authDomain: "youthbuzzwebtest.firebaseapp.com",
@@ -152,7 +155,7 @@ function Login() {
             setSeconds(30);
             // setSign("otp")
             setShow("otp");
-            setButton(false)
+            setButton(true)
          
           })
           .catch((error) => {
@@ -175,12 +178,13 @@ function Login() {
 
         const user = result.user;
 
-        alert("verification success");
+        toast.success("verification success");
         navigate('/')
       })
       .catch((error) => {
         // User couldn't sign in (bad verification code?)
         console.log(error, "hii");
+        toast.error("wrong otp");
         // ...
       });
   };
@@ -476,7 +480,12 @@ function Login() {
               <input
                 type="text"
                 value={number}
-                onChange={(e) => setNumber(e.target.value)}
+                
+                onChange={(e) => {
+                  // Allow only numeric characters in the phone input
+                  const numericValue = e.target.value.replace(/[^0-9]/g, "");
+                  setNumber(numericValue);
+                }}
                 className="input-form"
                 placeholder="Enter your number"
               ></input>
@@ -544,13 +553,16 @@ function Login() {
                   <Link
                     className=""
 
-                    onClick={handleCoundown}
+                    onClick={()=>{setButton(false)
+                      setShow("number")}
+                    
+                    }
                     style={{color:"#0d4f74",marginTop:"10px"}}
                   >
                     Didn't recieve code?
                   </Link>
                 )}
-              </div>
+                           </div>
             </div>
           </div>
         </form>

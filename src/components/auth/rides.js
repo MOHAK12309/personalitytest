@@ -55,7 +55,7 @@ function Rides() {
   };
 
   const [data, setData] = useState([]);
-  const [timeSlot, setTimeSlot] = useState("");
+  const [timeSlot, setTimeSlot] = useState("10");
   const [amount, setAmont] = useState("");
   const [Status, setStatus] = useState("");
   const [bookStatus, setBookstatus] = useState("");
@@ -73,7 +73,8 @@ function Rides() {
   console.log(Status);
   const id = useSelector((state) => state.get_seller_profile_id.user_id);
 
-  const RideBuy = async () => {
+  const RideBuy = async (e) => {
+    e.preventDefault()
     try {
       const res = await axios.post(`${baseUrl}/api/v1/booking/BookRide/1184`, {
         Coins: amount,
@@ -86,7 +87,7 @@ function Rides() {
         buytest();
       }
     } catch (error) {
-      alert("Booked");
+      toast.error("Booked");
       setBookstatus("");
     }
   };
@@ -153,6 +154,7 @@ function Rides() {
         <div>
           {data.map((item) => {
             return (
+              <form onSubmit={RideBuy}>
               <div
                 style={{ position: "absolute", width: "100%", zIndex: "100" }}
               >
@@ -170,9 +172,10 @@ function Rides() {
                     Book for:{" "}
                     <select
                       className="timeselection"
+                      required
                       value={timeSlot}
                       onChange={(e) => setTimeSlot(e.target.value)}
-                    >
+                    > <option disabled>select time</option>
                       <option value="10">10</option>
                       <option value="30">30</option>
                       <option value="45">45</option>
@@ -185,6 +188,7 @@ function Rides() {
                     <input
                       type="text"
                       disabled
+                      required
                       className="bookfont"
                       style={{
                         background: "transparent",
@@ -197,11 +201,12 @@ function Rides() {
                       onChange={(e) => setTimeSlot(e.target.value)}
                     ></input>
                   </div>
-                  <button onClick={RideBuy} className="confirm">
+                  <button type="submit"className="confirm">
                     Confirm Booking
                   </button>
                 </div>
               </div>
+              </form>
             );
           })}
         </div>

@@ -25,6 +25,7 @@ function Login() {
   const baseUrls = "http://localhost:8000";
 
   const [show3, setShow3] = useState(true);
+  const [button,setButton]=useState(false)
   const [name, setfirstName] = useState("");
   const [sign, setSign] = useState("firstVerify");
   const [email, setEmail] = useState("");
@@ -73,6 +74,10 @@ function Login() {
       clearInterval(interval);
     };
   });
+   const handleCoundown=()=>{
+    setButton(true)
+    setShow("number")
+   }
   const firebaseConfig = {
     apiKey: "AIzaSyBjepGG8G886Y_AKHW5BYtdasJG-6JmhYc",
     authDomain: "youthbuzzwebtest.firebaseapp.com",
@@ -127,6 +132,7 @@ function Login() {
 
       // }
       if (response.data.statusbar === "success") {
+        
         dispatch(
           getUserIdFromAuth(
             response.data.data.user._id,
@@ -135,16 +141,18 @@ function Login() {
             response.data.data.user.email
           )
         );
+        setButton(true)
         signInWithPhoneNumber(auth, fullPhoneNumber, appVerifier)
           .then((confirmationResult) => {
             window.confirmationResult = confirmationResult;
             toast.success("verification code send to phonenumber");
 
             setShow("otp");
-            setMinutes(2);
-            setSeconds(59);
+            setMinutes(1);
+            setSeconds(30);
             // setSign("otp")
             setShow("otp");
+            setButton(false)
          
           })
           .catch((error) => {
@@ -475,14 +483,28 @@ function Login() {
             </div>
             <div>
               <br></br>
+              {button ?
               <Button
                 type="submit"
-                style={{ background: "#0d4f74" }}
+              
+                style={{ background: "#0d4f74",color:"white" }}
                 variant="contained"
                 className="join-btn2"
+                disabled
+              >
+                LOGIN....
+              </Button>:
+                <Button
+                
+                type="submit"
+                style={{ background: "#0d4f74",color:"white" }}
+                variant="contained"
+                className="join-btn2"
+              
               >
                 LOGIN
               </Button>
+}
             </div>
           </div>
         </form>
@@ -494,6 +516,7 @@ function Login() {
 
             <div>
             <div className="join-font">VERIFY OTP</div>
+            
               <input
                 type="text"
                 value={otp}
@@ -511,6 +534,23 @@ function Login() {
               >
                 VERIFY
               </Button>
+              <div className="countdown-text">
+                {seconds > 0 || minutes > 0 ? (
+                  <p style={{color:"white"}}>
+                    Time Remaining: {minutes < 10 ? `0${minutes}` : minutes}:
+                    {seconds < 10 ? `0${seconds}` : seconds}
+                  </p>
+                ) : (
+                  <Link
+                    className=""
+
+                    onClick={handleCoundown}
+                    style={{color:"#0d4f74",marginTop:"10px"}}
+                  >
+                    Didn't recieve code?
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </form>

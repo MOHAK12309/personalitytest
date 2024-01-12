@@ -9,6 +9,7 @@ import Join from "./components/auth/join";
 import { Toaster } from "react-hot-toast";
 import Rides from "./components/auth/rides";
 import Login from "./components/auth/Login";
+import Profile from "./components/auth/profile";
 
 // importing service creation pages
 
@@ -29,7 +30,8 @@ function App() {
           <Route path="/join" element={<Join />}></Route>
           <Route path="/end" element={<PasswordReset />}></Route>
           <Route path="/rides/1184/VR Spaceship" element={<Rides/>} />
-          <Route path="login" element={<Login />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/userProfile" element={<Profile />}></Route>
         </Routes>
       </div>
       <Toaster/>

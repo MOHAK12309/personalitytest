@@ -179,7 +179,7 @@ function Login() {
         const user = result.user;
 
         toast.success("verification success");
-        navigate('/')
+        navigate('/userProfile')
       })
       .catch((error) => {
         // User couldn't sign in (bad verification code?)

@@ -501,7 +501,7 @@ function Login() {
                 className="join-btn2"
                 disabled
               >
-                LOGIN....
+                LOGIN
               </Button>:
                 <Button
                 

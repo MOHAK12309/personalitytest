@@ -27,7 +27,7 @@ const Scan = new URL("../../images/SCAN CODE.png", import.meta.url);
 
 function Profile() {
   const [data, setData] = useState([]);
-  const [edit, setEdit] = useState("edit");
+  const [edit, setEdit] = useState("profile");
   const [show, setShow] = useState("case1");
   const [show3, setShow3] = useState(true);
   const [name, setName] = useState("");
@@ -319,7 +319,7 @@ function Profile() {
                   </div>
                   {scanneropen && (
                     <div
-                      style={{ marginTop: "10px" }}
+                   
                       className="scanner-container"
                     >
                       <QrScanner
@@ -344,7 +344,7 @@ function Profile() {
                     </div>
                   )}
                   <div style={{ textAlign: "center" }}>
-                  <button  onClick={()=>setEdit("edit")} className="join-btn">
+                  <button  onClick={()=>setEdit("edit")} style={{marginTop:"10px"}} className="join-btn">
                         EDIT
                       </button>
                       <br></br>
@@ -354,6 +354,7 @@ function Profile() {
                           setopenScan(false);
                         }}
                         className="X"
+                        style={{marginTop:"10px"}}
                       >
                         X
                       </button>

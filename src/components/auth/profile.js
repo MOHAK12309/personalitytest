@@ -121,6 +121,8 @@ function Profile() {
         // Navigate to the detected URL
 
         window.location.href = result.text;
+        setopenScan(false)
+
       } else {
         console.error("Invalid URL format");
       }

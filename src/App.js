@@ -11,6 +11,8 @@ import Rides from "./components/auth/rides";
 import Login from "./components/auth/Login";
 import Profile from "./components/auth/profile";
 import LandingPage from "./components/auth/landingPage";
+import ARScene from "./components/auth/ArScene";
+import ARImageTracking from "./components/auth/ArScene";
 
 // importing service creation pages
 
@@ -34,6 +36,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/userProfile" element={<Profile />}></Route>
           <Route path="/landingPage" element={<LandingPage />}></Route>
+          <Route path="/ArLanding" element ={<ARScene/>}></Route>
         </Routes>
       </div>
       <Toaster/>

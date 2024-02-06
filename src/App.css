@@ -481,6 +481,9 @@ body {
   .profile-flex {
     flex-direction: column;
   }
+  .profile-des-para-main{
+    width: 100%;
+  }
   .profile-main {
     top: 120px;
   }

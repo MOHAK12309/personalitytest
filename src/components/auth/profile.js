@@ -246,7 +246,7 @@ function Profile() {
           <div className="video3">
             <div className="nav">
               <div className="logo" style={{ width: "200px" }}>
-                <img width="100%" src={logo}></img>
+               <Link to="/"> <img width="100%" src={logo}></img></Link>
               </div>
               <div>
                 <button

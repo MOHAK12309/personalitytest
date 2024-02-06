@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import { initializeApp } from "firebase/app";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
+import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import {
   getAuth,
   RecaptchaVerifier,
@@ -24,6 +25,7 @@ const Background = new URL(
 );
 const logo = new URL("../../images/Color_Gradient 2 (1).png", import.meta.url);
 const Scan = new URL("../../images/SCAN CODE.png", import.meta.url);
+const LOGOUT = new URL("../../images/LOGOUT.png", import.meta.url);
 
 function Profile() {
   const [data, setData] = useState([]);
@@ -253,7 +255,7 @@ function Profile() {
                   variant="contained"
                   className="logout pc"
                 >
-                  LOGOUT
+                 <img width="70%" src={LOGOUT}></img>
                 </button>
               </div>
             </div>
@@ -269,10 +271,14 @@ function Profile() {
             <div className="abso">
               {edit == "profile" && (
                 <div className="profile-main">
+                  <div className="mobile">
+               <EditNoteOutlinedIcon  onClick={()=>setEdit('edit')} style={{color:"white", position:"absolute", cursor:"pointer", top:"59px", right:"50px"}}/>
+               </div>
                   <div>
                     <h2 className="p-name pc">{item.name}</h2>
                   </div>
                   <div className="profile-des">
+                  
                     <div className="profile-pic">
                       <img
                         width="100%"
@@ -280,6 +286,7 @@ function Profile() {
                         style={{ borderRadius: "50%" }}
                         src={`https://youthbuzzdata.s3.ap-south-1.amazonaws.com/${item.photo}`}
                       ></img>
+                    
                     </div>
                     <h2 className="p-name mobile">{item.name}</h2>
                     <div className="profile-des-para-main">
@@ -293,10 +300,13 @@ function Profile() {
                           variant="contained"
                           className="logout mobile"
                         >
-                          LOGOUT
+                            <img width="70%" src={LOGOUT}></img>
                         </button>
                       </div>
                     </div>
+                    <div className="pc">
+                  <EditNoteOutlinedIcon style={{color:"white", cursor:"pointer"}} onClick={()=>setEdit('edit')}/>
+                  </div>
                   </div>
                   <div className="profile-more">
                     <div className="profile-flex">
@@ -346,10 +356,8 @@ function Profile() {
                     </div>
                   )}
                   <div style={{ textAlign: "center" }}>
-                  <button  onClick={()=>setEdit("edit")} style={{marginTop:"10px"}} className="join-btn">
-                        EDIT
-                      </button>
-                      <br></br>
+               
+                      
                     {scanneropen ? (
                       <button
                         onClick={() => {

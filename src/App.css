@@ -47,8 +47,15 @@ body {
 }
 .joinFooter {
   width: 100%;
-  height: 475px;
+  height: auto;
+  padding: 20px;
   background: #0e1b23;
+}
+.newera {
+  font-family: "Rajdhani", sans-serif;
+  color: white;
+  font-size: 3em;
+  text-align: center;
 }
 .join-btn {
   color: #fff;
@@ -56,13 +63,13 @@ body {
   padding: 20px 60px 20px 55px;
   background: #0d4f74;
   font-family: "Enixe", sans-serif;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+ 
   font-size: 2em;
   font-style: normal;
   margin: auto;
   font-weight: bolder;
   border: none;
-  border-radius: 10px;
+
   margin-top: 220px;
   line-height: normal;
 }
@@ -80,7 +87,7 @@ body {
 
   font-size: 15px;
   font-style: normal;
-  margin-top: 5px;
+
 
   font-weight: bolder;
   border: 0;
@@ -142,7 +149,7 @@ body {
 }
 .input-form {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
   border: none;
   background: #d9d9d9;
   color: #000;
@@ -157,12 +164,14 @@ body {
 .input-form::placeholder {
   color: black;
   font-weight: 600;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 20px;
 }
 .right {
   margin-top: 140px;
   color: rgba(255, 255, 255, 0.33);
+  font-family: "Rajdhani", sans-serif;
 
-  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -404,7 +413,7 @@ body {
 
 .profile-des-para {
   color: #fff;
-
+  margin-right:20px ;
   text-align: right;
   font-family: "Rajdhani", sans-serif;
   font-size: 20px;
@@ -415,6 +424,8 @@ body {
 }
 .profile-des-para-main {
   width: 400px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .profile-more {
@@ -481,8 +492,9 @@ body {
   .profile-flex {
     flex-direction: column;
   }
-  .profile-des-para-main{
+  .profile-des-para-main {
     width: 100%;
+    flex-direction: column;
   }
   .profile-main {
     top: 120px;
@@ -528,19 +540,12 @@ body {
   }
 }
 
-
-
-
-
-
-
 /* landing page */
 
-.landing-grid{
-  background-image: url('./images/gridimg.jpg');
+.landing-grid {
+  background-image: url("./images/gridimg.jpg");
   height: 100vh;
   width: 100%;
 }
-.display-flex{
-  
+.display-flex {
 }

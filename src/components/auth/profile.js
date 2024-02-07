@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import { initializeApp } from "firebase/app";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
-import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import {
   getAuth,
   RecaptchaVerifier,
@@ -123,8 +123,7 @@ function Profile() {
         // Navigate to the detected URL
 
         window.location.href = result.text;
-        setopenScan(false)
-
+        setopenScan(false);
       } else {
         console.error("Invalid URL format");
       }
@@ -238,6 +237,20 @@ function Profile() {
       // }
     }
   };
+  useEffect(() => {
+    if (!id) {
+      navigate("/login", {
+        replace: true,
+        state: {
+          signIn: true,
+        },
+      });
+    } else {
+      navigate("/userProfile");
+
+      // Assuming fetchData is a function you want to call when 'id' is truthy
+    }
+  }, [navigate, id]);
 
   return (
     <>
@@ -246,7 +259,10 @@ function Profile() {
           <div className="video3">
             <div className="nav">
               <div className="logo" style={{ width: "200px" }}>
-               <Link to="/"> <img width="100%" src={logo}></img></Link>
+                <Link to="/">
+                  {" "}
+                  <img width="100%" src={logo}></img>
+                </Link>
               </div>
               <div>
                 <button
@@ -255,7 +271,7 @@ function Profile() {
                   variant="contained"
                   className="logout pc"
                 >
-                 <img width="70%" src={LOGOUT}></img>
+                  <img width="70%" src={LOGOUT}></img>
                 </button>
               </div>
             </div>
@@ -272,13 +288,21 @@ function Profile() {
               {edit == "profile" && (
                 <div className="profile-main">
                   <div className="mobile">
-               <EditNoteOutlinedIcon  onClick={()=>setEdit('edit')} style={{color:"white", position:"absolute", cursor:"pointer", top:"59px", right:"50px"}}/>
-               </div>
+                    <EditNoteOutlinedIcon
+                      onClick={() => setEdit("edit")}
+                      style={{
+                        color: "white",
+                        position: "absolute",
+                        cursor: "pointer",
+                        top: "59px",
+                        right: "50px",
+                      }}
+                    />
+                  </div>
                   <div>
                     <h2 className="p-name pc">{item.name}</h2>
                   </div>
                   <div className="profile-des">
-                  
                     <div className="profile-pic">
                       <img
                         width="100%"
@@ -286,13 +310,16 @@ function Profile() {
                         style={{ borderRadius: "50%" }}
                         src={`https://youthbuzzdata.s3.ap-south-1.amazonaws.com/${item.photo}`}
                       ></img>
-                    
                     </div>
                     <h2 className="p-name mobile">{item.name}</h2>
                     <div className="profile-des-para-main">
-                      <h2 className="profile-des-para">
-                       {item.Description}
-                      </h2>
+                      <h2 className="profile-des-para">{item.Description}</h2>
+                      <div className="pc">
+                        <EditNoteOutlinedIcon
+                          style={{ color: "white", cursor: "pointer" }}
+                          onClick={() => setEdit("edit")}
+                        />
+                      </div>
                       <div>
                         <button
                           onClick={handleLogout}
@@ -300,13 +327,10 @@ function Profile() {
                           variant="contained"
                           className="logout mobile"
                         >
-                            <img width="70%" src={LOGOUT}></img>
+                          <img width="70%" src={LOGOUT}></img>
                         </button>
                       </div>
                     </div>
-                    <div className="pc">
-                  <EditNoteOutlinedIcon style={{color:"white", cursor:"pointer"}} onClick={()=>setEdit('edit')}/>
-                  </div>
                   </div>
                   <div className="profile-more">
                     <div className="profile-flex">
@@ -330,10 +354,7 @@ function Profile() {
                     </div>
                   </div>
                   {scanneropen && (
-                    <div
-                   
-                      className="scanner-container"
-                    >
+                    <div className="scanner-container">
                       <QrScanner
                         delay={300}
                         onError={handleError}
@@ -356,15 +377,13 @@ function Profile() {
                     </div>
                   )}
                   <div style={{ textAlign: "center" }}>
-               
-                      
                     {scanneropen ? (
                       <button
                         onClick={() => {
                           setopenScan(false);
                         }}
                         className="X"
-                        style={{marginTop:"10px"}}
+                        style={{ marginTop: "10px" }}
                       >
                         X
                       </button>
@@ -379,7 +398,7 @@ function Profile() {
                         }}
                         className="join-btn"
                       >
-                        <img width="70%" src={Scan}></img>
+                        <img width="200px" src={Scan}></img>
                       </button>
                     )}
                   </div>
@@ -449,9 +468,12 @@ function Profile() {
                         SAVE
                       </button>
                     </form>
-                    <button  onClick={()=>setEdit("profile")} className="join-btn2">
-                        BACK
-                      </button>
+                    <button
+                      onClick={() => setEdit("profile")}
+                      className="join-btn2"
+                    >
+                      BACK
+                    </button>
                   </div>
                 </div>
               )}

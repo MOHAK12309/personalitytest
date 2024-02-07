@@ -20,6 +20,7 @@ const Background3 = new URL(
 const Scan = new URL("../../images/SCAN CODE.png", import.meta.url);
 
 const joinNow = new URL("../../images/JOIN NOW.png", import.meta.url);
+const newera = new URL("../../images/newera.png", import.meta.url);
 function Game() {
   const videoRef = useRef(null);
   const [scanneropen, setopenScan] = useState(false);
@@ -62,7 +63,7 @@ function Game() {
         // Navigate to the detected URL
 
         window.location.href = result.text;
-        setopenScan(false)
+        setopenScan(false);
       } else {
         console.error("Invalid URL format");
       }
@@ -86,62 +87,9 @@ function Game() {
             <div style={{ textAlign: "center" }}></div>
           </div>
           <div className="img-game1">
-            <img src={Background3} width="100%"></img>
+            <img src={newera} width="100%"></img>
 
-            <div style={{ textAlign: "center" }}>
-              <div className="mobilebtn">
-                {scanneropen && (
-                  <div
-                    style={{ marginTop: "10px" }}
-                    className="scanner-container"
-                  >
-                    <QrScanner
-                      delay={300}
-                      onError={handleError}
-                      onScan={handleScan}
-                      style={{ width: "100%", zIndex: "99" }}
-                      facingMode="environment"
-                      facingModeChanged={(value) => {
-                        if (value === "user") {
-                          // Flash is not supported when using the front camera
-                          setFlashOn(false);
-                        }
-                      }}
-                      constraints={{
-                        video: {
-                          facingMode: "environment",
-                          torch: flashOn,
-                        },
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-              <div>
-                {scanneropen ? 
-                  <button
-                  onClick={() => {
-                    setopenScan(false);
-                  }}
-                  className="X"
-                >
-                  X
-                </button>:
-                  <button
-                    onClick={() => {
-                      setopenScan(true);
-                    }}
-                    style={{
-                      padding: "20px 30px 20px 30px",
-                      marginTop: "10px",
-                    }}
-                    className="join-btn"
-                  >
-                    <img width="70%" src={Scan}></img>
-                  </button>
-                 }
-              </div>
-            </div>
+            <div style={{ textAlign: "center" }}></div>
           </div>
         </div>
         <video
@@ -163,6 +111,54 @@ function Game() {
               <img width="200px" src={joinNow}></img>{" "}
             </button>
           </Link>
+          {scanneropen && (
+            <div style={{ marginTop: "10px" }} className="scanner-container">
+              <QrScanner
+                delay={300}
+                onError={handleError}
+                onScan={handleScan}
+                style={{ width: "100%", zIndex: "99" }}
+                facingMode="environment"
+                facingModeChanged={(value) => {
+                  if (value === "user") {
+                    // Flash is not supported when using the front camera
+                    setFlashOn(false);
+                  }
+                }}
+                constraints={{
+                  video: {
+                    facingMode: "environment",
+                    torch: flashOn,
+                  },
+                }}
+              />
+            </div>
+          )}
+          <div>
+            {scanneropen ? (
+              <button
+                onClick={() => {
+                  setopenScan(false);
+                }}
+                className="X"
+              >
+                X
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setopenScan(true);
+                }}
+                style={{
+                  padding: "20px 30px 20px 30px",
+                  marginTop: "10px",
+                }}
+                className="join-btn"
+              >
+                <img width="200px" height="25px" src={Scan}></img>
+              </button>
+            )}
+          </div>
         </div>
         <div
           style={{

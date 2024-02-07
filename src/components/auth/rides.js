@@ -10,6 +10,9 @@ import "react-multi-carousel/lib/styles.css";
 import { getUserIdFromAuth } from "../../Redux/actions/GetSellerIdFromAuthActionCreators";
 import { useSelector } from "react-redux";
 import Button from "@mui/material/Button";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 const register = new URL("../../images/a1_White-01 (1).png", import.meta.url);
 
 const Background = new URL(
@@ -29,6 +32,10 @@ const vrspaceShip = new URL(
   "../../images/THE VR Spaceship.png",
   import.meta.url
 );
+
+const book = new URL("../../images/BOOK.png", import.meta.url);
+const cbook = new URL("../../images/confirm Booking.png", import.meta.url);
+
 function Rides() {
   const baseUrl = "https://server.youthbuzz.in";
   const baseUrls = "http://localhost:8000";
@@ -74,7 +81,7 @@ function Rides() {
   const id = useSelector((state) => state.get_seller_profile_id.user_id);
 
   const RideBuy = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const res = await axios.post(`${baseUrl}/api/v1/booking/BookRide/1184`, {
         Coins: amount,
@@ -155,57 +162,58 @@ function Rides() {
           {data.map((item) => {
             return (
               <form onSubmit={RideBuy}>
-              <div
-                style={{ position: "absolute", width: "100%", zIndex: "100" }}
-              >
-                <div className="bookslot">
-                  <h1>
-                    <img width="100%" src={vrspaceShip}></img>{" "}
-                  </h1>
-                  <img
-                    width="200px"
-                    height="200px"
-                    src="https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg"
-                  ></img>
-                  <div className="bookfont"> Status:{item.Status}</div>
-                  <div className="bookfont" style={{ display: "flex" }}>
-                    Book for:{" "}
-                    <select
-                      className="timeselection"
-                      required
-                      value={timeSlot}
-                      onChange={(e) => setTimeSlot(e.target.value)}
-                    > <option disabled>select time</option>
-                      <option value="10">10</option>
-                      <option value="30">30</option>
-                      <option value="45">45</option>
-                      <option value="60">60</option>
-                    </select>{" "}
-                    min
+                <div
+                  style={{ position: "absolute", width: "100%", zIndex: "100" }}
+                >
+                  <div className="bookslot">
+                    <h1>
+                      <img width="100%" src={vrspaceShip}></img>{" "}
+                    </h1>
+                    <img
+                      width="200px"
+                      height="200px"
+                      src="https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg"
+                    ></img>
+                    <div className="bookfont"> Status:{item.Status}</div>
+                    <div className="bookfont" style={{ display: "flex" }}>
+                      Book for:
+                      <select
+                        className="timeselection"
+                        required
+                        value={timeSlot}
+                        onChange={(e) => setTimeSlot(e.target.value)}
+                      >
+                        <option value="10">10</option>
+                        <option value="30">30</option>
+                        <option value="45">45</option>
+                        <option value="60">60</option>
+                      </select>{" "}
+                      min
+                    </div>
+                    <div className="bookfont">
+                      cost:
+                      <input
+                        type="text"
+                        disabled
+                        required
+                        className="bookfont"
+                        style={{
+                          background: "transparent",
+                          border: "none",
+                          outline: "none",
+                          margin: "0px",
+                          width: "60px",
+                        }}
+                        value={timeSlot}
+                        onChange={(e) => setTimeSlot(e.target.value)}
+                      ></input>
+                    </div>
+                    <button type="submit" className="confirm">
+                      <img style={{ width: "100%" }} src={cbook}></img>
+                    </button>
+                    <br></br>
                   </div>
-                  <div className="bookfont">
-                    cost:
-                    <input
-                      type="text"
-                      disabled
-                      required
-                      className="bookfont"
-                      style={{
-                        background: "transparent",
-                        border: "none",
-                        outline: "none",
-                        margin: "0px",
-                        width: "60px",
-                      }}
-                      value={timeSlot}
-                      onChange={(e) => setTimeSlot(e.target.value)}
-                    ></input>
-                  </div>
-                  <button type="submit"className="confirm">
-                    Confirm Booking
-                  </button>
                 </div>
-              </div>
               </form>
             );
           })}
@@ -260,13 +268,9 @@ function Rides() {
                     </h4>
                     <h4 className="bookfont">Start Time:</h4>
                     <h4 className="bookfont">End Time:</h4>
-
-                    <button
-                      onClick={() => setBookstatus("")}
-                      className="confirm"
-                    >
-                      Go Back
-                    </button>
+                  <div onClick={()=>setBookstatus("")} className="confirm">
+                  <ReplyAllIcon/>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -291,13 +295,12 @@ function Rides() {
                     bookStatus ? "blurred-background" : ""
                   }`}
                 >
-                  <div style={{ width: "100%", textAlign: "center" }}>
+                  <div className="rides-book-button">
                     <button
                       onClick={(e) => setBookstatus("form")}
-                      style={{ width: "400px" }}
-                      className="join-btn"
+                      className="join-btn ride-mobile-book"
                     >
-                      BOOK NOW
+                      <img src={book}></img>
                     </button>
                   </div>
                 </div>
@@ -312,12 +315,11 @@ function Rides() {
                     <div className="img-game">
                       <div className="RidePic">
                         <h1>
-                          <img width="80%" src={vrspaceShip}></img>{" "}
+                          <img width="100%" src={vrspaceShip}></img>{" "}
                         </h1>
                         <br></br>
                         <img
-                          width="70%"
-                          height="400px"
+                          className="ride-main-pic"
                           src={`https://ourcadium.s3.ap-south-1.amazonaws.com/Ride%20Thumbnails%20and%20Gallery%20Images/thumbnail-6597d231ae1baa8234a9d881-1704448736153.jpeg`}
                         ></img>
 

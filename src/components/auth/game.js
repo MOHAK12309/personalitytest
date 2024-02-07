@@ -111,6 +111,7 @@ function Game() {
               <img width="200px" src={joinNow}></img>{" "}
             </button>
           </Link>
+         
           {scanneropen && (
             <div style={{ marginTop: "10px" }} className="scanner-container">
               <QrScanner
@@ -150,7 +151,7 @@ function Game() {
                   setopenScan(true);
                 }}
                 style={{
-                  padding: "20px 30px 20px 30px",
+                  
                   marginTop: "10px",
                 }}
                 className="join-btn"

@@ -261,7 +261,7 @@ function Rides() {
                   ></img>
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <h4
-                      style={{ textAlign: "center", margin: "0px" }}
+                      style={{ textAlign: "center", margin: "10px auto" }}
                       className="bookfont"
                     >
                       Booking Confirmed!

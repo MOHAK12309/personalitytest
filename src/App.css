@@ -382,6 +382,10 @@ body {
   .bookslot {
     width: 90%;
   }
+  .confirm{
+    width: 150px;
+    padding: 10px 15px 10px 15px;
+  }
   .ride-main-pic {
     width: 90%;
   }

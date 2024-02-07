@@ -125,7 +125,7 @@ function Join() {
                 <ReCAPTCHA
                   sitekey="6Ld7FCQpAAAAAEVxVaBwSAXPjfljYxrfArXTSLDz"
                   onChange={handleRecaptchaChange}
-                  style={{marginTop:"20px"}}
+                  style={{ marginTop: "20px" }}
                 />
 
                 <div
@@ -144,18 +144,15 @@ function Join() {
               </div>
             </div>
           </div>
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "10px",
+            }}
+          >
+            <h3 style={{margin:"0px"}} className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
+          </div>
         </form>
-      </div>
-      <div
-        style={{
-          textAlign: "center",
-          width: "100%",
-          margin: "auto",
-          position: "absolute",
-          bottom: "0px",
-        }}
-      >
-        <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
       </div>
     </div>
   );

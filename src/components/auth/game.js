@@ -159,13 +159,17 @@ function Game() {
         </div>
         <div
           style={{
-            textAlign: "center",
+            textAlign:"center",
             width: "100%",
             margin: "auto auto 10px auto",
+            paddingTop:"150px"
           }}
+        
+        
         >
-          <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
+        <h3   className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>  
         </div>
+        
       </div>
     </div>
   );

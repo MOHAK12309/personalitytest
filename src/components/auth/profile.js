@@ -13,6 +13,7 @@ import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import QrCodeScannerOutlinedIcon from '@mui/icons-material/QrCodeScannerOutlined';
 import {
   getAuth,
   RecaptchaVerifier,
@@ -398,7 +399,8 @@ function Profile() {
                         }}
                         className="join-btn"
                       >
-                        <img width="200px" src={Scan}></img>
+                        <QrCodeScannerOutlinedIcon/>
+                        {/* <img width="200px" src={Scan}></img> */}
                       </button>
                    
                   </div>

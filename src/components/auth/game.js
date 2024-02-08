@@ -83,7 +83,7 @@ function Game() {
     setFlashOn(!flashOn);
   };
   return (
-    <>
+    <div>
       {scanneropen &&
         <div style={{width:"100%",textAlign:"center"}}> <button onClick={()=>setopenScan(false)} className="X"><CloseOutlinedIcon/></button></div>
         }
@@ -132,9 +132,10 @@ function Game() {
           className="video2"
           loop
         ></video>
+        
       </div>
 
-      <div className={`joinFooter ${scanneropen ? "blurred-background" : ""}`}>
+      <div className="joinFooter">
         <div className="join-btn-main">
           <Link to="join">
             {" "}
@@ -166,7 +167,7 @@ function Game() {
           <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

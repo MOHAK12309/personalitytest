@@ -47,9 +47,12 @@ body {
 }
 .joinFooter {
   width: 100%;
-  height: auto;
+
   padding: 20px;
+  height: 100vh;
   background: #0e1b23;
+
+ 
 }
 .newera {
   font-family: "Rajdhani", sans-serif;
@@ -278,7 +281,7 @@ body {
     align-items: center;
   }
   .video {
-    height: 100vh;
+    
   }
   .img-game1 {
     top: 30vh;

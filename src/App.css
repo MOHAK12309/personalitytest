@@ -152,7 +152,7 @@ body {
   border: none;
   background: #d9d9d9;
   color: #000;
-  font-family: "Poppins", "sans-serif";
+  font-family: "Rajdhani", "sans-serif";
   font-size: 15px;
   font-style: normal;
   font-weight: bold;
@@ -363,20 +363,52 @@ body {
   font-weight: 400;
 }
 .scanner-container {
-  width: 300px;
-  margin: auto;
-  z-index: 99;
+  position: absolute;
+  top: 20%;
+  min-width:  100%;
+  min-height: 200vh;
+
+  z-index: 9999;
 }
+.scanner-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 2px;
+  background-color: red; /* Adjust as needed */
+  animation: scanAnimation 1s linear infinite;
+}
+
+@keyframes scanAnimation {
+  0% {
+    top: 0px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+
 .X {
   background-color: #0d4f74;
   color: white;
   border: none;
   outline: none;
+  position: absolute;
+  top:10px;
   border-radius: 50%;
+  z-index: 99999;
+  
 }
 .rides-book-button {
   width: "100%";
   text-align: center;
+}
+.updateProfile{
+  background-color: #0e1b23;
+  padding: 20px;
+  margin: 20px auto;
 }
 @media (max-width: 600px) {
   .bookslot {
@@ -404,7 +436,7 @@ body {
   }
 }
 .blurred-background {
-  filter: blur(5px);
+  filter: blur(30px);
 }
 
 /* profile */

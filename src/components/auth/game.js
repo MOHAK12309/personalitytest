@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import QrScanner from "react-qr-scanner";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 const register = new URL("../../images/a1_White-01 (1).png", import.meta.url);
 
 const Background = new URL(
@@ -69,6 +70,10 @@ function Game() {
       }
     }
   };
+  const handleScanOpen = () => {
+    setopenScan(true);
+    window.scrollTo(0, 0);
+  };
 
   const handleError = (error) => {
     console.error("Error accessing camera:", error);
@@ -78,8 +83,35 @@ function Game() {
     setFlashOn(!flashOn);
   };
   return (
-    <div>
-      <div className="video">
+    <>
+      {scanneropen &&
+        <div style={{width:"100%",textAlign:"center"}}> <button onClick={()=>setopenScan(false)} className="X"><CloseOutlinedIcon/></button></div>
+        }
+      <div className="scanner-container">
+        {scanneropen && (
+          <QrScanner
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: "100%", height: "50vh" }}
+            facingMode="environment"
+            facingModeChanged={(value) => {
+              if (value === "user") {
+                // Flash is not supported when using the front camera
+                setFlashOn(false);
+              }
+            }}
+            constraints={{
+              video: {
+                facingMode: "environment",
+                torch: flashOn,
+              },
+            }}
+          />
+        )}
+      
+      </div>
+      <div className={`video ${scanneropen ? "blurred-background" : ""}`}>
         <div className="a1_white">
           <div className="img-game">
             <img src={register} width="100%"></img>
@@ -102,7 +134,7 @@ function Game() {
         ></video>
       </div>
 
-      <div className="joinFooter">
+      <div className={`joinFooter ${scanneropen ? "blurred-background" : ""}`}>
         <div className="join-btn-main">
           <Link to="join">
             {" "}
@@ -111,54 +143,17 @@ function Game() {
               <img width="200px" src={joinNow}></img>{" "}
             </button>
           </Link>
-         
-          {scanneropen && (
-            <div style={{ marginTop: "10px" }} className="scanner-container">
-              <QrScanner
-                delay={300}
-                onError={handleError}
-                onScan={handleScan}
-                style={{ width: "100%", zIndex: "99" }}
-                facingMode="environment"
-                facingModeChanged={(value) => {
-                  if (value === "user") {
-                    // Flash is not supported when using the front camera
-                    setFlashOn(false);
-                  }
-                }}
-                constraints={{
-                  video: {
-                    facingMode: "environment",
-                    torch: flashOn,
-                  },
-                }}
-              />
-            </div>
-          )}
+
           <div>
-            {scanneropen ? (
-              <button
-                onClick={() => {
-                  setopenScan(false);
-                }}
-                className="X"
-              >
-                X
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  setopenScan(true);
-                }}
-                style={{
-                  
-                  marginTop: "10px",
-                }}
-                className="join-btn"
-              >
-                <img width="200px" height="25px" src={Scan}></img>
-              </button>
-            )}
+            <button
+              onClick={handleScanOpen}
+              style={{
+                marginTop: "10px",
+              }}
+              className="join-btn"
+            >
+              <img width="200px" height="25px" src={Scan}></img>
+            </button>
           </div>
         </div>
         <div
@@ -171,7 +166,7 @@ function Game() {
           <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

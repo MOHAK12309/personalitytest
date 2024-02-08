@@ -16,10 +16,12 @@ import {
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUserIdFromAuth } from "../../Redux/actions/GetSellerIdFromAuthActionCreators";
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 function Login() {
   const [number, setNumber] = useState("");
   const [otp, setOTP] = useState("");
-  const [show, setShow] = useState("number");
+  const [show, setShow] = useState("otp");
   const [country, setcountry] = useState("");
   const baseUrl = "https://server.youthbuzz.in";
   const baseUrls = "http://localhost:8000";
@@ -194,7 +196,7 @@ function Login() {
       {show == "number" && (
         <form onSubmit={HandleLogin} className="join-form join-form-main">
           <div style={{ width: "80%", margin: "auto" }}>
-            <div className="join-font">LOGIN WITH OTP</div>
+            <h4 style={{textAlign:"center",marginLeft:"0px"}} className="bookfont">LOGIN WITH OTP</h4>
             <div>
               <select
                 value={country}
@@ -501,7 +503,7 @@ function Login() {
                 className="join-btn2"
                 disabled
               >
-                LOGIN
+                <LoginOutlinedIcon/>
               </Button>:
                 <Button
                 
@@ -511,7 +513,7 @@ function Login() {
                 className="join-btn2"
               
               >
-                LOGIN
+                <LoginOutlinedIcon/>
               </Button>
 }
             </div>
@@ -524,7 +526,7 @@ function Login() {
           
 
             <div>
-            <div className="join-font">VERIFY OTP</div>
+            <h4 style={{textAlign:"center",marginLeft:"0px"}} className="bookfont">VERIFY OTP</h4>
             
               <input
                 type="text"
@@ -534,30 +536,30 @@ function Login() {
               ></input>
             </div>
             <div>
-              <br></br>
+              
             <Button
                 type="submit"
-                style={{ background: "#0d4f74" }}
+                style={{ background: "#0d4f74",marginTop:"20px" }}
                 variant="contained"
                 className="join-btn2"
               >
-                VERIFY
+                <CheckCircleOutlinedIcon/>
               </Button>
               <div className="countdown-text">
                 {seconds > 0 || minutes > 0 ? (
-                  <p style={{color:"white"}}>
+                  <p className="backfont" style={{color:"white",marginTop:"20px"}}>
                     Time Remaining: {minutes < 10 ? `0${minutes}` : minutes}:
                     {seconds < 10 ? `0${seconds}` : seconds}
                   </p>
                 ) : (
                   <Link
-                    className=""
+                    className="bookfont"
 
                     onClick={()=>{setButton(false)
                       setShow("number")}
                     
                     }
-                    style={{color:"#0d4f74",marginTop:"10px"}}
+                    style={{color:"white" ,marginTop:"60px",marginLeft:"0px",textAlign:"center"}}
                   >
                     Didn't recieve code?
                   </Link>

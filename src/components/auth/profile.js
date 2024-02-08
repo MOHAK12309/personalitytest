@@ -10,6 +10,9 @@ import { initializeApp } from "firebase/app";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import {
   getAuth,
   RecaptchaVerifier,
@@ -252,11 +255,42 @@ function Profile() {
     }
   }, [navigate, id]);
 
+ 
+  const handleScanOpen = () => {
+    setopenScan(true);
+    window.scrollTo(0, 0);
+  };
   return (
     <>
+    {scanneropen &&
+        <div style={{width:"100%",textAlign:"center"}}> <button onClick={()=>setopenScan(false)} className="X"><CloseOutlinedIcon/></button></div>
+        }
+        {scanneropen && (
+                    <div className="scanner-container">
+                      <QrScanner
+                        delay={300}
+                        onError={handleError}
+                        onScan={handleScan}
+                        style={{ width: "100%",height:"50vh" }}
+                        facingMode="environment"
+                        facingModeChanged={(value) => {
+                          if (value === "user") {
+                            // Flash is not supported when using the front camera
+                            setFlashOn(false);
+                          }
+                        }}
+                        constraints={{
+                          video: {
+                            facingMode: "environment",
+                            torch: flashOn,
+                          },
+                        }}
+                      />
+                    </div>
+                  )}
       {data.map((item) => {
         return (
-          <div className="video3">
+          <div className={`video3 ${scanneropen ? "blurred-background" : ""}`}>
             <div className="nav">
               <div className="logo" style={{ width: "200px" }}>
                 <Link to="/">
@@ -353,45 +387,11 @@ function Profile() {
                       <div className="profile-flex2"></div>
                     </div>
                   </div>
-                  {scanneropen && (
-                    <div className="scanner-container">
-                      <QrScanner
-                        delay={300}
-                        onError={handleError}
-                        onScan={handleScan}
-                        style={{ width: "100%", zIndex: "99" }}
-                        facingMode="environment"
-                        facingModeChanged={(value) => {
-                          if (value === "user") {
-                            // Flash is not supported when using the front camera
-                            setFlashOn(false);
-                          }
-                        }}
-                        constraints={{
-                          video: {
-                            facingMode: "environment",
-                            torch: flashOn,
-                          },
-                        }}
-                      />
-                    </div>
-                  )}
+              
                   <div style={{ textAlign: "center" }}>
-                    {scanneropen ? (
+                   
                       <button
-                        onClick={() => {
-                          setopenScan(false);
-                        }}
-                        className="X"
-                        style={{ marginTop: "10px" }}
-                      >
-                        X
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          setopenScan(true);
-                        }}
+                        onClick={handleScanOpen}
                         style={{
                           padding: "20px 30px 20px 30px",
                           marginTop: "10px",
@@ -400,7 +400,7 @@ function Profile() {
                       >
                         <img width="200px" src={Scan}></img>
                       </button>
-                    )}
+                   
                   </div>
                 </div>
               )}
@@ -408,22 +408,22 @@ function Profile() {
               {edit == "edit" && (
                 <div style={{ width: "60%", margin: "auto" }}>
                   <div className="profile-main" style={{ textAlign: "center" }}>
-                    <h4 className="join-font">EDIT PROFILE</h4>
-                    <form onSubmit={handleSubmitphoto}>
+          
+                    <form className="updateProfile" onSubmit={handleSubmitphoto}>
                       <br></br>
-                      <h4 className="join-font">UPLOAD PHOTO</h4>
+                      <h4 style={{textAlign:"center",margin:"auto"}} className="bookfont">UPLOAD PHOTO</h4>
                       <input
                         onChange={handleFileChange}
                         className="input-form"
                         type="file"
                       ></input>
-                      <button type="submit" className="join-btn2">
-                        SAVE
+                      <button type="submit" style={{marginTop:"20px"}} className="join-btn2">
+                        <SaveAltIcon/>
                       </button>
                     </form>
-                    <form onSubmit={handleSignUp}>
+                    <form className="updateProfile" onSubmit={handleSignUp}>
                       <br></br>
-                      <h4 className="join-font">PERSONAL DETIALS</h4>
+                      <h4 style={{textAlign:"center",margin:"auto"}} className="bookfont">PERSONAL DETIALS</h4>
                       <input
                         type="text"
                         placeholder={name}
@@ -444,18 +444,19 @@ function Profile() {
                         placeholder={Description}
                         className="input-form"
                       ></textarea>
-                      <button type="submit" className="join-btn2">
-                        SAVE
+                      <button style={{marginTop:"20px"}} type="submit" className="join-btn2">
+                      <SaveAltIcon/>
                       </button>
                     </form>
-                    <form onSubmit={handleLogin}>
+                    <form className="updateProfile" onSubmit={handleLogin}>
                       <br></br>
-                      <h4 className="join-font">UPDATE PASSWORD</h4>
+                      <h4 style={{textAlign:"center",margin:"auto"}} className="bookfont">UPDATE PASSWORD</h4>
                       <input
                         type="password"
                         value={current}
                         onChange={(e) => setCurrent(e.target.value)}
                         className="input-form"
+                        placeholder="Current password"
                       ></input>
 
                       <input
@@ -463,16 +464,17 @@ function Profile() {
                         value={confirm_password}
                         onChange={(e) => setCPassword(e.target.value)}
                         className="input-form"
+                        placeholder="Confrim password"
                       ></input>
-                      <button type="submit" className="join-btn2">
-                        SAVE
+                      <button type="submit" style={{marginTop:"20px"}} className="join-btn2">
+                        <SaveAltIcon/>
                       </button>
                     </form>
                     <button
                       onClick={() => setEdit("profile")}
                       className="join-btn2"
                     >
-                      BACK
+                      <ReplyAllIcon/>
                     </button>
                   </div>
                 </div>

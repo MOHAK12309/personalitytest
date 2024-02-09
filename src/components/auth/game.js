@@ -87,13 +87,17 @@ function Game() {
       {scanneropen &&
         <div style={{width:"100%",textAlign:"center"}}> <button onClick={()=>setopenScan(false)} className="X"><CloseOutlinedIcon/></button></div>
         }
+          {scanneropen &&
+        <div style={{width:"100%",textAlign:"center" ,zIndex:"9999"}} className="X2"> Scan Ride Qr Code</div>
+        }
+         
       <div className="scanner-container">
         {scanneropen && (
           <QrScanner
             delay={300}
             onError={handleError}
             onScan={handleScan}
-            style={{ width: "100%", height: "50vh" }}
+            style={{ width: "100%", height: "100vh" }}
             facingMode="environment"
             facingModeChanged={(value) => {
               if (value === "user") {
@@ -109,7 +113,7 @@ function Game() {
             }}
           />
         )}
-      
+    
       </div>
       <div className={`video ${scanneropen ? "blurred-background" : ""}`}>
         <div className="a1_white">

@@ -54,12 +54,12 @@ function Join() {
 
     try {
       const res = await axios.post(
-        "https://server.ourcadium.com/api/v1/user/signup",
+        "https://server.youthbuzz.in/api/v1/ourcadium/Lead",
         {
-          name: name,
-          phoneNumber: phone,
-          desc: description,
-          email: email,
+          nameOflead: name,
+          ContactOfaLead: phone,
+          DescriptionOfLead: description,
+          EmailOfLead: email,
         }
       );
 

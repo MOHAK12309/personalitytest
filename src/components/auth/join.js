@@ -62,7 +62,7 @@ function Join() {
           EmailOfLead: email,
         }
       );
-
+      console.log(res)
       if (res.data.statusbar === "success") {
         toast.success("Recruitment initiated");
         Navigate("/end");

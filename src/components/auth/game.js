@@ -97,7 +97,7 @@ function Game() {
             delay={300}
             onError={handleError}
             onScan={handleScan}
-            style={{ width: "100%", height: "100vh" }}
+            style={{ width: "100%", height: "50vh" }}
             facingMode="environment"
             facingModeChanged={(value) => {
               if (value === "user") {

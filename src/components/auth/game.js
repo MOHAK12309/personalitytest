@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import QrScanner from "react-qr-scanner";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { Button } from "@mui/material";
 const register = new URL("../../images/a1_White-01 (1).png", import.meta.url);
 
 const Background = new URL(
@@ -85,7 +86,7 @@ function Game() {
   return (
     <div>
       {scanneropen &&
-        <div style={{width:"100%",textAlign:"center"}}> <button onClick={()=>setopenScan(false)} className="X"><CloseOutlinedIcon/></button></div>
+        <div style={{width:"100%",textAlign:"center"}}> <Button style={{backgroundColor:"#0d4f74",color:"white",position:"relative",top:"80vh",fontFamily:"'Rajdhani',sans-serif",zIndex:"99999"}} onClick={()=>setopenScan(false)}>Close</Button></div>
         }
           {scanneropen &&
         <div style={{width:"100%",textAlign:"center" ,zIndex:"9999"}} className="X2"> Scan Ride Qr Code</div>

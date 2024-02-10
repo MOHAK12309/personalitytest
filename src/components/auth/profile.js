@@ -67,6 +67,20 @@ function Profile() {
   const navigate = useNavigate("");
   const dispatch = useDispatch("");
   useEffect(() => {
+    if (!id) {
+      navigate("/login", {
+        replace: true,
+        state: {
+          signIn: true,
+        },
+      });
+    } else {
+      navigate("/userProfile");
+
+      // Assuming fetchData is a function you want to call when 'id' is truthy
+    }
+  }, [navigate, id]);
+  useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
@@ -241,20 +255,7 @@ function Profile() {
       // }
     }
   };
-  useEffect(() => {
-    if (!id) {
-      navigate("/login", {
-        replace: true,
-        state: {
-          signIn: true,
-        },
-      });
-    } else {
-      navigate("/userProfile");
-
-      // Assuming fetchData is a function you want to call when 'id' is truthy
-    }
-  }, [navigate, id]);
+ 
 
  
   const handleScanOpen = () => {
@@ -263,8 +264,8 @@ function Profile() {
   };
   return (
     <>
-    {scanneropen &&
-        <div style={{width:"100%",textAlign:"center"}}> <button onClick={()=>setopenScan(false)} className="X"><CloseOutlinedIcon/></button></div>
+   {scanneropen &&
+        <div style={{width:"100%",textAlign:"center"}}> <Button style={{backgroundColor:"#0d4f74",color:"white",position:"relative",top:"80vh",fontFamily:"'Rajdhani',sans-serif",zIndex:"99999"}} onClick={()=>setopenScan(false)}>Close</Button></div>
         }
         {scanneropen && (
                     <div className="scanner-container">

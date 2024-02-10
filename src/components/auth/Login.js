@@ -21,7 +21,7 @@ import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 function Login() {
   const [number, setNumber] = useState("");
   const [otp, setOTP] = useState("");
-  const [show, setShow] = useState("otp");
+  const [show, setShow] = useState("number");
   const [country, setcountry] = useState("");
   const baseUrl = "https://server.youthbuzz.in";
   const baseUrls = "http://localhost:8000";

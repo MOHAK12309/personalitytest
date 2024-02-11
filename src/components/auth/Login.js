@@ -545,9 +545,9 @@ function Login() {
               >
                 <CheckCircleOutlinedIcon/>
               </Button>
-              <div className="countdown-text">
+              <div className="backfont">
                 {seconds > 0 || minutes > 0 ? (
-                  <p className="backfont" style={{color:"white",marginTop:"20px"}}>
+                  <p className="backfont" style={{color:"white",marginTop:"20px",  fontFamily: "'Rajdhani',sans-serif"}}>
                     Time Remaining: {minutes < 10 ? `0${minutes}` : minutes}:
                     {seconds < 10 ? `0${seconds}` : seconds}
                   </p>

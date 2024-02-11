@@ -36,10 +36,7 @@ function Join() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!recaptchaValue) {
-      toast.error("Please verify that you are not a robot.");
-      return;
-    }
+    
 
     // Validate email and phone fields
     if (!validateEmail(email)) {
@@ -62,15 +59,15 @@ function Join() {
           EmailOfLead: email,
         }
       );
-      console.log(res)
-      if (res.data.statusbar === "success") {
+   
+      if (res.data.status === "Success") {
+        
         toast.success("Recruitment initiated");
         Navigate("/end");
       }
 
-      console.log(res);
     } catch (error) {
-      console.log(error);
+
       toast.error("You are already registered");
     }
   };

@@ -36,14 +36,15 @@ function Join() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
-
     // Validate email and phone fields
     if (!validateEmail(email)) {
       toast.error("Invalid email format");
       return;
     }
-
+    if (!handleRecaptchaChange()) {
+      toast.error("Please verify recaptcha");
+      return;
+    }
     if (!validatePhone(phone)) {
       toast.error("Phone number should contain only numeric characters");
       return;
@@ -59,15 +60,12 @@ function Join() {
           EmailOfLead: email,
         }
       );
-   
+
       if (res.data.status === "Success") {
-        
         toast.success("Recruitment initiated");
         Navigate("/end");
       }
-
     } catch (error) {
-
       toast.error("You are already registered");
     }
   };
@@ -147,7 +145,9 @@ function Join() {
               marginTop: "10px",
             }}
           >
-            <h3 style={{margin:"0px"}} className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
+            <h3 style={{ margin: "0px" }} className="right">
+              ALL RIGHTS RESERVED | © www.OURCADIUM.com
+            </h3>
           </div>
         </form>
       </div>

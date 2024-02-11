@@ -41,7 +41,7 @@ function Join() {
       toast.error("Invalid email format");
       return;
     }
-    if (!handleRecaptchaChange()) {
+    if (!recaptchaValue) {
       toast.error("Please verify recaptcha");
       return;
     }

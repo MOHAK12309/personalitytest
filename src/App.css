@@ -261,7 +261,7 @@ body {
     top: 40%;
   }
   .joinback{
-    height: 105vh;
+    height: auto;
   }
   .join-form-main {
     width: 100%;

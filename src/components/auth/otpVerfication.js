@@ -22,7 +22,7 @@ import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 function OtpVerification() {
   const [phone, setNumber] = useState("");
   const [otp, setOTP] = useState("");
-  const [show, setShow] = useState("number");
+  const [show, setShow] = useState("enquiry");
   const [country, setcountry] = useState("");
   const baseUrl = "https://server.youthbuzz.in";
   const baseUrls = "http://localhost:8000";

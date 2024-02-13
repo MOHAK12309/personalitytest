@@ -613,7 +613,7 @@ function OtpVerification() {
             >
              ONBOARDING
             </h4>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="join-form-main">
               <div style={{ width: "80%", margin: "auto" }}>
                 
@@ -677,7 +677,7 @@ function OtpVerification() {
                   >
                     <Button
                       type="submit"
-                      onClick={handleSubmit}
+               
                       style={{ background: "#0d4f74" }}
                       variant="contained"
                       className="join-btn2"

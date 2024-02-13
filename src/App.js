@@ -13,6 +13,7 @@ import Profile from "./components/auth/profile";
 import LandingPage from "./components/auth/landingPage";
 import ARScene from "./components/auth/ArScene";
 import ARImageTracking from "./components/auth/ArScene";
+import OtpVerification from "./components/auth/otpVerfication";
 
 // importing service creation pages
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/userProfile" element={<Profile />}></Route>
           <Route path="/landingPage" element={<LandingPage />}></Route>
           <Route path="/ArLanding" element ={<ARScene/>}></Route>
+          <Route path="/BoardingPass" element ={<OtpVerification/>}></Route>
         </Routes>
       </div>
       <Toaster/>

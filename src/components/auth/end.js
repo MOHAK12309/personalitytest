@@ -11,8 +11,8 @@ const Background2 = new URL(
 function PasswordReset() {
   return (
     <div>
-    <div className="color">
-      <div className="back">
+    <div  className="joinback">
+      <div style={{height:"90vh"}} className="back">
         <div className="position">
         <div style={{ width: "70%", margin: "auto" }}>
           <img width="100%" src={Background2}></img>

@@ -8,7 +8,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { initializeApp } from "firebase/app";
 import { useSelector } from "react-redux";
-import BackupOutlinedIcon from '@mui/icons-material/BackupOutlined';
+import BackupOutlinedIcon from "@mui/icons-material/BackupOutlined";
 import {
   getAuth,
   RecaptchaVerifier,
@@ -52,7 +52,7 @@ function OtpVerification() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [showUpload, setUpload] = useState(false);
-  const[remark,setRemark]=useState("")
+  const [remark, setRemark] = useState("");
   const [file, setFile] = useState("");
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -91,8 +91,6 @@ function OtpVerification() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-
-
 
   const firebaseConfig = {
     apiKey: "AIzaSyBjepGG8G886Y_AKHW5BYtdasJG-6JmhYc",
@@ -136,7 +134,7 @@ function OtpVerification() {
       signInWithPhoneNumber(auth, fullPhoneNumber, appVerifier)
         .then((confirmationResult) => {
           window.confirmationResult = confirmationResult;
-
+          setDisableButton(true);
           setShow("otp");
           setMinutes(2);
           setSeconds(59);
@@ -153,6 +151,7 @@ function OtpVerification() {
   const verifyCode = (e) => {
     e.preventDefault();
     // const code = 123456;
+    setDisableButton(false);
     window.confirmationResult
       .confirm(otp)
       .then((result) => {
@@ -161,7 +160,8 @@ function OtpVerification() {
         const user = result.user;
 
         toast.success("verification success");
-         setShow("enquiry")
+
+        setShow("enquiry");
       })
       .catch((error) => {
         // User couldn't sign in (bad verification code?)
@@ -171,9 +171,6 @@ function OtpVerification() {
       });
   };
 
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -182,7 +179,7 @@ function OtpVerification() {
       toast.error("Invalid email format");
       return;
     }
-  
+
     if (!validatePhone(phone)) {
       toast.error("Phone number should contain only numeric characters");
       return;
@@ -196,13 +193,13 @@ function OtpVerification() {
           ContactOfaLead: phone,
           DescriptionOfLead: description,
           EmailOfLead: email,
-          RemarkOfLead:remark
+          RemarkOfLead: remark,
         }
       );
 
       if (res.data.status === "Success") {
         toast.success("Onboarding Done");
-     
+        navigate("/end");
       }
     } catch (error) {
       toast.error("Somthing Went Wrong");
@@ -221,7 +218,7 @@ function OtpVerification() {
               style={{ textAlign: "center", marginLeft: "0px" }}
               className="bookfont"
             >
-             GENERATE OTP
+              GENERATE OTP
             </h4>
             <div>
               <select
@@ -522,21 +519,31 @@ function OtpVerification() {
               {button ? (
                 <Button
                   type="submit"
-                  style={{ background: "#0d4f74", color: "white" }}
+                  style={{
+                    background: "#0d4f74",
+                    color: "white",
+                    fontFamily: "'Rajdhani',sans-serif",
+                  }}
                   variant="contained"
                   className="join-btn2"
                   disabled
+                  value="SEND OTP"
                 >
-                  <LoginOutlinedIcon />
+                  SEND OTP
                 </Button>
               ) : (
                 <Button
                   type="submit"
-                  style={{ background: "#0d4f74", color: "white" }}
+                  style={{
+                    background: "#0d4f74",
+                    color: "white",
+                    fontFamily: "'Rajdhani',sans-serif",
+                  }}
                   variant="contained"
                   className="join-btn2"
+                  value="SEND OTP"
                 >
-                  <LoginOutlinedIcon />
+                  SEND OTP
                 </Button>
               )}
             </div>
@@ -562,14 +569,38 @@ function OtpVerification() {
               ></input>
             </div>
             <div>
-              <Button
-                type="submit"
-                style={{ background: "#0d4f74", marginTop: "20px" }}
-                variant="contained"
-                className="join-btn2"
-              >
-                <CheckCircleOutlinedIcon />
-              </Button>
+              {button ? (
+                <Button
+                  type="submit"
+                  style={{
+                    background: "#0d4f74",
+                    color: "white",
+                    marginTop: "20px",
+                    fontFamily: "'Rajdhani',sans-serif",
+                  }}
+                  variant="contained"
+                  className="join-btn2"
+                  value="VERIFY"
+                >
+                  VERIFY
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  style={{
+                    background: "#0d4f74",
+                    color: "white",
+                    marginTop: "20px",
+                    fontFamily: "'Rajdhani',sans-serif",
+                  }}
+                  variant="contained"
+                  className="join-btn2"
+                  value="VERIFY"
+                  disabled
+                >
+                  VERIFY
+                </Button>
+              )}
               <div className="backfont">
                 {seconds > 0 || minutes > 0 ? (
                   <p
@@ -607,16 +638,15 @@ function OtpVerification() {
       )}
       {show == "enquiry" && (
         <div className="join-form">
-            <h4
-              style={{ textAlign: "center", marginLeft: "0px" }}
-              className="bookfont"
-            >
-             ONBOARDING
-            </h4>
+          <h4
+            style={{ textAlign: "center", marginLeft: "0px" }}
+            className="bookfont"
+          >
+            ONBOARDING
+          </h4>
           <form onSubmit={handleSubmit}>
             <div className="join-form-main">
               <div style={{ width: "80%", margin: "auto" }}>
-                
                 <div style={{ width: "90%", margin: "auto" }}>
                   <input
                     required
@@ -667,7 +697,6 @@ function OtpVerification() {
                     style={{ height: "180px" }}
                   ></textarea>
 
-               
                   <div
                     style={{
                       width: "80%",
@@ -677,12 +706,11 @@ function OtpVerification() {
                   >
                     <Button
                       type="submit"
-               
                       style={{ background: "#0d4f74" }}
                       variant="contained"
                       className="join-btn2"
                     >
-                      <BackupOutlinedIcon/>
+                      SUBMIT
                     </Button>
                   </div>
                 </div>
@@ -691,10 +719,14 @@ function OtpVerification() {
             <div
               style={{
                 textAlign: "center",
-                marginTop: "10px",
+                width: "100%",
+                alignItems: "center",
+
+                textAlign: "center",
               }}
+              className="right"
             >
-              <h3 style={{ margin: "0px" }} className="right">
+              <h3 style={{ margin: "0px" }}>
                 ALL RIGHTS RESERVED | © www.OURCADIUM.com
               </h3>
             </div>

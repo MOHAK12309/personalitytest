@@ -49,10 +49,8 @@ body {
   width: 100%;
 
   padding: 20px;
-  height: 100vh;
+  min-height: 100vh;
   background: #0e1b23;
-
- 
 }
 .newera {
   font-family: "Rajdhani", sans-serif;
@@ -129,8 +127,10 @@ body {
 }
 .joinback {
   background: #0e1b23;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
+  position: fixed;
+  overflow-y: scroll;
   align-items: center;
   text-align: center;
   padding-top: 100px;
@@ -147,7 +147,7 @@ body {
 .join-form-main {
   width: 50%;
   margin: auto;
-  height: auto;
+  height: 95vh;
 }
 .input-form {
   width: 100%;
@@ -170,10 +170,9 @@ body {
   font-size: 20px;
 }
 .right {
-  margin-top: 140px;
   color: rgba(255, 255, 255, 0.33);
   font-family: "Rajdhani", sans-serif;
-
+  margin-top: 20px;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -260,27 +259,28 @@ body {
   .position {
     top: 40%;
   }
-  .joinback{
-    height: auto;
+  .joinback {
+    height: 100vh;
+    padding-top: 30px;
+
+    overflow-y: scroll;
   }
   .join-form-main {
     width: 100%;
-    height: auto;
   }
   .join-font {
     font-size: 1em;
   }
   .join-btn {
-   
     width: 250px;
     padding: 10px 20px 10px 20px;
   }
-  
+
   .joinFooter {
     height: auto;
     align-items: center;
   }
-  
+
   .img-game1 {
     top: 30vh;
   }
@@ -290,13 +290,17 @@ body {
   .thankYou {
     font-size: 10px;
   }
+  .right {
+    position: relative;
+    margin-top: 10px;
+  }
 }
 
 /* ride */
 .rideSlide {
   width: 100%;
   height: 500px;
-  
+
   margin-top: 20px;
 }
 .ride-main-pic {
@@ -348,7 +352,7 @@ body {
   margin: auto;
   font-weight: bolder;
   border: none;
- 
+
   margin-top: 20px;
   margin-bottom: 20px;
 
@@ -366,7 +370,7 @@ body {
 .scanner-container {
   position: absolute;
   top: 20%;
-  min-width:  100%;
+  min-width: 100%;
   min-height: 200vh;
 
   z-index: 9999;
@@ -398,31 +402,27 @@ body {
   outline: none;
   position: relative;
   top: 30%;
-  
-   
+
   z-index: 99999;
-  font-family: 'Rajdhani',sans-serif;
-  
+  font-family: "Rajdhani", sans-serif;
 }
 .X2 {
-
   color: white;
   border: none;
   outline: none;
   position: absolute;
-  top:80px;
-  font-family: 'Rajdhani',sans-serif;
+  top: 80px;
+  font-family: "Rajdhani", sans-serif;
   border-radius: 50%;
   z-index: 99999;
   font-size: 30px;
-  
 }
 
 .rides-book-button {
   width: "100%";
   text-align: center;
 }
-.updateProfile{
+.updateProfile {
   background-color: #0e1b23;
   padding: 20px;
   margin: 20px auto;
@@ -431,24 +431,24 @@ body {
   .bookslot {
     width: 90%;
   }
-  .confirm{
+  .confirm {
     width: 150px;
     padding: 10px 15px 10px 15px;
   }
   .ride-main-pic {
     width: 90%;
   }
-  .scanner-container{
+  .scanner-container {
     width: 250px;
     margin: auto;
   }
   .rides-book-button {
     width: 100%;
   }
-  .rideSlide{
+  .rideSlide {
     height: auto;
   }
-  .rides-mobile-book{
+  .rides-mobile-book {
     width: 200px;
   }
 }

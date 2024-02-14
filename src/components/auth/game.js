@@ -141,7 +141,7 @@ function Game() {
       </div>
 
       <div className="joinFooter">
-        <div className="join-btn-main">
+        <div style={{height:"92vh"}} className="join-btn-main">
           <Link to="join">
             {" "}
             <button className="join-btn">
@@ -166,8 +166,8 @@ function Game() {
           style={{
             textAlign:"center",
             width: "100%",
-            margin: "auto auto 10px auto",
-            paddingTop:"150px"
+            
+           
           }}
         
         

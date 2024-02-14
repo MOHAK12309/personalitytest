@@ -11,24 +11,35 @@ const Background2 = new URL(
 function PasswordReset() {
   return (
     <div>
-    <div  className="joinback">
-      <div style={{height:"90vh"}} className="back">
-        <div className="position">
-        <div style={{ width: "70%", margin: "auto" }}>
-          <img width="100%" src={Background2}></img>
+      <div
+        style={{ padding: "0px" }}
+        className="joinback"
+      >
+        <div style={{ height: "93vh" }} className="back">
+          <div className="position">
+            <div style={{ width: "70%", margin: "auto" }}>
+              <img width="100%" src={Background2}></img>
+            </div>
+            <div className="thankYou">
+              Thank you for joining the cause, you will hear from us soon
+            </div>
+            <div style={{ marginTop: "20px" }} className="thankYou">
+              <Link to="/">
+                <button className="join-btn2">HOME</button>
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="thankYou">
-        Thank you for joining the cause, you will hear from us soon
-        </div>
-        <div style={{marginTop:"20px"}} className="thankYou">
-       <Link to="/"><button className="join-btn2">HOME</button></Link> 
-        </div>
+        <div
+          style={{
+            textAlign: "center",
+            width: "100%",
+            margin: " auto 0px auto",
+          }}
+        >
+          <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
         </div>
       </div>
-      <div style={{textAlign:"center",width:"100%",margin:"310px auto 0px auto"}}>
-         <h3 className="right">ALL RIGHTS RESERVED | © www.OURCADIUM.com</h3>
-         </div>
-    </div>
     </div>
   );
 }

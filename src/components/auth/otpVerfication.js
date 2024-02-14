@@ -136,8 +136,8 @@ function OtpVerification() {
           window.confirmationResult = confirmationResult;
           setDisableButton(true);
           setShow("otp");
-          setMinutes(2);
-          setSeconds(59);
+          setMinutes(1);
+          setSeconds(0);
 
           toast.success("verification code send to phonenumber");
         })

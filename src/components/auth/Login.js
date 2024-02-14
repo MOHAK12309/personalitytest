@@ -154,7 +154,7 @@ function Login() {
 
             setShow("otp");
             setMinutes(1);
-            setSeconds(30);
+            setSeconds(0);
             // setSign("otp")
             setShow("otp");
             setButton(true)

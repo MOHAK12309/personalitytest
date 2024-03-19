@@ -66,6 +66,7 @@ function Rides() {
   const [amount, setAmont] = useState("");
   const [Status, setStatus] = useState("");
   const [bookStatus, setBookstatus] = useState("");
+  const [booking,setbooking]=useState("")
   const handleTime = (e) => {
     e.preventDefault();
     setAmont(timeSlot);
@@ -76,6 +77,7 @@ function Rides() {
   useEffect(() => {
     if (data === undefined || data.length === 0) return;
     setStatus(data[0].Status !== null ? data[0].Status : "");
+    setbooking(data[0].Status !== null ? data[0].Status : "");
   }, [data]);
   console.log(Status);
   const id = useSelector((state) => state.get_seller_profile_id.user_id);
@@ -117,12 +119,15 @@ function Rides() {
         `https://server.youthbuzz.in/api/v1/user/updatecoin/${id}`,
         {
           amount: timeSlot,
+         RideName:"Vr Spaceship"
         }
       );
-      console.log(res);
+      console.log(res,"hii");
       if (res.data.status == true) {
         setBookstatus("confirm");
         RideStatus();
+        navigate("/userProfile")
+        toast.success("Ride Booked")
       }
     } catch (error) {}
   };

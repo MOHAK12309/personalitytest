@@ -10,10 +10,10 @@ import { initializeApp } from "firebase/app";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import ReplyAllIcon from '@mui/icons-material/ReplyAll';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import QrCodeScannerOutlinedIcon from '@mui/icons-material/QrCodeScannerOutlined';
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import ReplyAllIcon from "@mui/icons-material/ReplyAll";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import QrCodeScannerOutlinedIcon from "@mui/icons-material/QrCodeScannerOutlined";
 import {
   getAuth,
   RecaptchaVerifier,
@@ -255,41 +255,54 @@ function Profile() {
       // }
     }
   };
- 
 
- 
   const handleScanOpen = () => {
     setopenScan(true);
     window.scrollTo(0, 0);
   };
   return (
     <>
-   {scanneropen &&
-        <div style={{width:"100%",textAlign:"center"}}> <Button style={{backgroundColor:"#0d4f74",color:"white",position:"relative",top:"80vh",fontFamily:"'Rajdhani',sans-serif",zIndex:"99999"}} onClick={()=>setopenScan(false)}>Close</Button></div>
-        }
-        {scanneropen && (
-                    <div className="scanner-container">
-                      <QrScanner
-                        delay={300}
-                        onError={handleError}
-                        onScan={handleScan}
-                        style={{ width: "100%",height:"50vh" }}
-                        facingMode="environment"
-                        facingModeChanged={(value) => {
-                          if (value === "user") {
-                            // Flash is not supported when using the front camera
-                            setFlashOn(false);
-                          }
-                        }}
-                        constraints={{
-                          video: {
-                            facingMode: "environment",
-                            torch: flashOn,
-                          },
-                        }}
-                      />
-                    </div>
-                  )}
+      {scanneropen && (
+        <div style={{ width: "100%", textAlign: "center" }}>
+          {" "}
+          <Button
+            style={{
+              backgroundColor: "#0d4f74",
+              color: "white",
+              position: "relative",
+              top: "80vh",
+              fontFamily: "'Rajdhani',sans-serif",
+              zIndex: "99999",
+            }}
+            onClick={() => setopenScan(false)}
+          >
+            Close
+          </Button>
+        </div>
+      )}
+      {scanneropen && (
+        <div className="scanner-container">
+          <QrScanner
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: "100%", height: "50vh" }}
+            facingMode="environment"
+            facingModeChanged={(value) => {
+              if (value === "user") {
+                // Flash is not supported when using the front camera
+                setFlashOn(false);
+              }
+            }}
+            constraints={{
+              video: {
+                facingMode: "environment",
+                torch: flashOn,
+              },
+            }}
+          />
+        </div>
+      )}
       {data.map((item) => {
         return (
           <div className={`video3 ${scanneropen ? "blurred-background" : ""}`}>
@@ -385,48 +398,86 @@ function Profile() {
                   </div>
                   <div className="profile-more">
                     <div className="profile-flex">
-                      <div className="profile-flex1"></div>
-                      <div className="profile-flex2"></div>
+                      <div className="profile-flex1">
+                        {" "}
+                        <h3 className="profile-wallet-main">Current Ride</h3>
+                        <p className="history">{item.current}</p>
+                      </div>
+                      <div className="profile-flex2">
+                        <h3 className="profile-wallet-main" style={{margin:"auto"}}>
+                          Pervious history
+                        </h3>
+                        <div className="history-main">
+                        {item.currentAndPrevious.map((item2) => {
+                          return (
+                           
+                              <div className="history-div">
+                                <p className="history">
+                                  Ride Name: {item2.RideName}
+                                </p>
+                                <p className="history">
+                                  Time: {item2.timeOfBooking}
+                                </p>
+                              </div>
+                        
+                          );
+                        })}
+                            </div>
+                      </div>
                     </div>
                   </div>
-              
+
                   <div style={{ textAlign: "center" }}>
-                   
-                      <button
-                        onClick={handleScanOpen}
-                        style={{
-                          padding: "20px 30px 20px 30px",
-                          marginTop: "10px",
-                        }}
-                        className="join-btn"
-                      >
-                        <QrCodeScannerOutlinedIcon/>
-                        {/* <img width="200px" src={Scan}></img> */}
-                      </button>
-                   
+                    <button
+                      onClick={handleScanOpen}
+                      style={{
+                        padding: "20px 30px 20px 30px",
+                        marginTop: "10px",
+                      }}
+                      className="join-btn"
+                    >
+                      <QrCodeScannerOutlinedIcon />
+                      {/* <img width="200px" src={Scan}></img> */}
+                    </button>
                   </div>
                 </div>
               )}
 
               {edit == "edit" && (
-                <div style={{ width: "60%", margin: "auto" }}>
+                <div className="edit-user">
                   <div className="profile-main" style={{ textAlign: "center" }}>
-          
-                    <form className="updateProfile" onSubmit={handleSubmitphoto}>
+                    <form
+                      className="updateProfile"
+                      onSubmit={handleSubmitphoto}
+                    >
                       <br></br>
-                      <h4 style={{textAlign:"center",margin:"auto"}} className="bookfont">UPLOAD PHOTO</h4>
+                      <h4
+                        style={{ textAlign: "center", margin: "auto" }}
+                        className="bookfont"
+                      >
+                        UPLOAD PHOTO
+                      </h4>
                       <input
                         onChange={handleFileChange}
                         className="input-form"
                         type="file"
                       ></input>
-                      <button type="submit" style={{marginTop:"20px"}} className="join-btn2">
-                        <SaveAltIcon/>
+                      <button
+                        type="submit"
+                        style={{ marginTop: "20px" }}
+                        className="join-btn2"
+                      >
+                        <SaveAltIcon />
                       </button>
                     </form>
                     <form className="updateProfile" onSubmit={handleSignUp}>
                       <br></br>
-                      <h4 style={{textAlign:"center",margin:"auto"}} className="bookfont">PERSONAL DETIALS</h4>
+                      <h4
+                        style={{ textAlign: "center", margin: "auto" }}
+                        className="bookfont"
+                      >
+                        PERSONAL DETIALS
+                      </h4>
                       <input
                         type="text"
                         placeholder={name}
@@ -447,13 +498,22 @@ function Profile() {
                         placeholder={Description}
                         className="input-form"
                       ></textarea>
-                      <button style={{marginTop:"20px"}} type="submit" className="join-btn2">
-                      <SaveAltIcon/>
+                      <button
+                        style={{ marginTop: "20px" }}
+                        type="submit"
+                        className="join-btn2"
+                      >
+                        <SaveAltIcon />
                       </button>
                     </form>
                     <form className="updateProfile" onSubmit={handleLogin}>
                       <br></br>
-                      <h4 style={{textAlign:"center",margin:"auto"}} className="bookfont">UPDATE PASSWORD</h4>
+                      <h4
+                        style={{ textAlign: "center", margin: "auto" }}
+                        className="bookfont"
+                      >
+                        UPDATE PASSWORD
+                      </h4>
                       <input
                         type="password"
                         value={current}
@@ -469,15 +529,19 @@ function Profile() {
                         className="input-form"
                         placeholder="Confrim password"
                       ></input>
-                      <button type="submit" style={{marginTop:"20px"}} className="join-btn2">
-                        <SaveAltIcon/>
+                      <button
+                        type="submit"
+                        style={{ marginTop: "20px" }}
+                        className="join-btn2"
+                      >
+                        <SaveAltIcon />
                       </button>
                     </form>
                     <button
                       onClick={() => setEdit("profile")}
                       className="join-btn2"
                     >
-                      <ReplyAllIcon/>
+                      <ReplyAllIcon />
                     </button>
                   </div>
                 </div>

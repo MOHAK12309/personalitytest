@@ -77,7 +77,36 @@ body {
 .join-btn:hover {
   background-color: #0d4e74d4;
 }
+.history-main {
+  max-height: 200px;
+  overflow-y: scroll;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  background-color: #0e1b23;
+  border: 2px solid white;
+}
+.history-div {
+  border: 2px solid white;
+  width: 100%;
+  margin: auto;
 
+  padding: 20px;
+}
+.history {
+  color: #fff;
+
+  text-align: center;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  width: 80%;
+
+  margin: auto;
+
+  font-weight: 400;
+  line-height: normal;
+}
 .join-btn2 {
   color: #fff;
 
@@ -258,6 +287,19 @@ body {
 @media (max-width: 600px) {
   .position {
     top: 40%;
+  }
+  .history-main {
+    width: 90%;
+    padding: 5px;
+  }
+  .profile-flex2 {
+    padding: 0px;
+  }
+  .history {
+    font-size: 12px;
+  }
+  .history-div {
+    width: 100%;
   }
   .joinback {
     height: 100vh;
@@ -527,13 +569,16 @@ body {
 .profile-flex1 {
   flex-basis: 20%;
   background: #0d4f74;
+  padding: 10px;
 
   text-align: center;
-  height: 250px;
+  height: 300px;
 }
 .profile-flex2 {
   flex-basis: 78%;
   background: #0d4f74;
+  padding: 10px;
+  height: 300px;
 }
 .profile-wallet-main {
   color: #fff;
@@ -569,9 +614,19 @@ body {
   z-index: 99;
   padding: 10px;
 }
+.edit-user {
+  width: 60%;
+  margin: auto;
+}
 @media (max-width: 600px) {
   .profile-flex {
     flex-direction: column;
+  }
+  .edit-user {
+    width: 90%;
+  }
+  .updateProfile {
+    width: 100%;
   }
   .profile-des-para-main {
     width: 100%;
